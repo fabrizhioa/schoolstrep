@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        hero: "url('assets/hero.jpg')",
+        table:
+          "url('https://cdn.shopify.com/s/files/1/0566/3132/8937/t/3/assets/pf-becad9ad--Copia-de-Sin-titulo.png?v=1619757640')",
+      },
       colors: {
         palette: {
           yellow: "#FEC037",

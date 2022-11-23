@@ -9,7 +9,7 @@ import Logo from "../assets/logo.png";
 
 const Splash = () => {
   return (
-    <div className="opacity-1 bg-palette-white flex flex-col items-center justify-center w-screen min-h-screen animate-moveOut absolute top-0 ">
+    <div className="opacity-1 bg-palette-white flex flex-col items-center justify-center w-screen min-h-screen animate-moveOut absolute top-0 z-10">
       <div className=" w-max">
         <img src={Logo} alt="logotipo" className="w-80 mx-auto my-4" />
         <div className="grid grid-cols-4 gap-2">
@@ -19,7 +19,7 @@ const Splash = () => {
               alt="colegio cervantes"
               className="w-32 aspect-square bg-palette-white p-2 rounded-md"
             />
-            <h3 className="font-medium text-sm">Colegio Cervantes</h3>
+            <h3 className="font-bold text-sm">Colegio Cervantes</h3>
           </div>
           <div className="flex flex-col gap-1 items-center justify-center">
             {" "}
@@ -28,7 +28,7 @@ const Splash = () => {
               alt="colegio de Ciencias"
               className="w-32 aspect-square bg-palette-white p-2 rounded-md"
             />
-            <h3 className="font-medium text-sm">Colegio de ciencias</h3>
+            <h3 className="font-bold text-sm">Colegio de ciencias</h3>
           </div>
           <div className="flex flex-col gap-1 items-center justify-center">
             <img
@@ -36,7 +36,7 @@ const Splash = () => {
               alt="colegio monteverde"
               className="w-32 aspect-square bg-palette-white p-2 rounded-md"
             />
-            <h3 className="font-medium text-sm">Colegio Monte Verde</h3>
+            <h3 className="font-bold text-sm">Colegio Monte Verde</h3>
           </div>
           <div className="flex flex-col gap-1 items-center justify-center">
             <img
@@ -44,7 +44,7 @@ const Splash = () => {
               alt="colegio del valle"
               className="w-32 aspect-square bg-palette-white p-2 rounded-md"
             />
-            <h3 className="font-medium text-sm">Colegio del Valle</h3>
+            <h3 className="font-bold text-sm">Colegio del Valle</h3>
           </div>
         </div>
       </div>
