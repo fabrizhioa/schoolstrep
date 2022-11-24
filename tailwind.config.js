@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       animation: {
-        moveOut: "moveOut 2s 3.1s ease forwards",
+        moveOut: "moveOut 2s 1s ease forwards",
       },
       minHeight: {
         heroHeader: "calc(100vh - 5rem)",

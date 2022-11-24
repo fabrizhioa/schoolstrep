@@ -31,7 +31,7 @@ const Home = () => {
             </h1>
 
             <a
-              href="#"
+              href="/#schools"
               className="rounded-full px-8 py-3 bg-palette-yellow/90 hover:bg-palette-yellow shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max  text-xl   "
             >
               Comprar ahora
@@ -39,7 +39,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="min-h-screen  flex items-center">
+      <section className="min-h-screen  flex items-center" id="schools">
         <div className="flex gap-4 p-4 max-w-screen-xl flex-wrap mx-auto w-full ">
           <h3 className="text-center text-4xl font-bold w-full text-palette-green">
             Catagalo
