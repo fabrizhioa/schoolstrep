@@ -9,7 +9,7 @@ import Logo from "../assets/logo.png";
 
 const Splash = () => {
   return (
-    <div className="opacity-1 bg-palette-white flex flex-col items-center justify-center w-screen min-h-screen animate-moveOut absolute top-0 z-10">
+    <div className="opacity-1 bg-palette-white flex flex-col items-center justify-center w-full min-h-screen animate-moveOut fixed top-0 z-20">
       <div className=" w-max">
         <img src={Logo} alt="logotipo" className="w-80 mx-auto my-4" />
         <div className="grid grid-cols-4 gap-2">
