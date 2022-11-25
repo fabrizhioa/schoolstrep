@@ -136,39 +136,47 @@ const Shop = () => {
         </details>
       </div>
       <div className="min-h-full bg-slate-100    w-full grid gap-2 grid-cols-4 text-center auto-rows-max p-2">
-        {Articulos.map((articulo, key) => {
+        {Articulos.map((articulo) => {
           let colegios = searchParams.get("colegios");
           let grados = searchParams.get("grados");
           let niveles = searchParams.get("niveles");
-          let isValidColegios = true;
-          let isValidGrados = true;
-          let isValidNiveles = true;
+          let isValidColegios = undefined;
+          let isValidGrados = undefined;
+          let isValidNiveles = undefined;
 
           if (colegios !== null) {
-            colegios.split("_").map((colegio) => {
-              if (!articulo.filtros.colegios.includes(colegio)) {
-                isValidColegios = false;
+            colegios.split("_").forEach((colegio) => {
+              // if (!articulo.filtros.colegios.includes(colegio)) {
+              //   isValidColegios = false;
+              // }
+
+              if (articulo.filtros.colegios.includes(colegio)) {
+                isValidColegios = true;
               }
             });
           }
 
           if (grados !== null) {
-            grados.split("_").map((grado) => {
-              if (!articulo.filtros.grados.includes(grado)) {
-                isValidGrados = false;
+            grados.split("_").forEach((grado) => {
+              if (articulo.filtros.grados.includes(grado)) {
+                isValidGrados = true;
               }
             });
           }
 
           if (niveles !== null) {
-            niveles.split("_").map((nivel) => {
-              if (!articulo.filtros.niveles.includes(nivel)) {
-                isValidNiveles = false;
+            niveles.split("_").forEach((nivel) => {
+              if (articulo.filtros.niveles.includes(nivel)) {
+                isValidNiveles = true;
               }
             });
           }
 
-          if (isValidColegios && isValidGrados && isValidNiveles) {
+          if (
+            (colegios === null || isValidColegios) &&
+            (grados === null || isValidGrados) &&
+            (niveles === null || isValidNiveles)
+          ) {
             return (
               <div
                 key={articulo.id}
