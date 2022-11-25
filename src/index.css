@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 @layer base {
    * {
       font-family: "Quicksand";
    }
-=======
-html {
-    scroll-behavior: smooth;
->>>>>>> 7287a688d612ab7cfe0cbe3b93b6f1c7a9f60b53
+   html {
+      scroll-behavior: smooth;
+ 
+  }
+
 }
