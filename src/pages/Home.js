@@ -18,15 +18,24 @@ const Home = () => {
             </h1>
 
             <a
+<<<<<<< HEAD
               href="/#"
               className="rounded-full px-8 py-3 bg-palette-yellow/90 hover:bg-palette-yellow shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max  text-xl "
+=======
+              href="/#schools"
+              className="rounded-full px-8 py-3 bg-palette-yellow/90 hover:bg-palette-yellow shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max  text-xl   "
+>>>>>>> 7287a688d612ab7cfe0cbe3b93b6f1c7a9f60b53
             >
               Comprar ahora
             </a>
           </div>
         </div>
       </section>
+<<<<<<< HEAD
       <section className="min-h-screen  flex items-center snap-end">
+=======
+      <section className="min-h-screen  flex items-center" id="schools">
+>>>>>>> 7287a688d612ab7cfe0cbe3b93b6f1c7a9f60b53
         <div className="flex gap-4 p-4 max-w-screen-xl flex-wrap mx-auto w-full ">
           <h3 className="text-center text-4xl font-bold w-full text-palette-yellow">
             Colegios
