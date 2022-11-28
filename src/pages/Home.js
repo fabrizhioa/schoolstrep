@@ -34,7 +34,7 @@ const Home = () => {
           <div className="flex gap-4 items-center justify-between w-full">
             {Colegios.map((colegio, key) => (
               <Link
-                to={"/shop/" + StringToUrl(colegio.nombre)}
+                to={"/shop?colegios=" + StringToUrl(colegio.nombre)}
                 className="flex flex-col w-2/6  shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] h-[50vh]  group"
                 key={key}
               >
