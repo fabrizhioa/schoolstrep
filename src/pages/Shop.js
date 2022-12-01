@@ -2,13 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import StringToUrl from "../adapters/StringToUrl";
 import { Colegios, Articulos } from "../fakedata";
-import { MdFilterListAlt } from "react-icons/md";
+import { MdFilterListAlt, MdOutlineStar, MdShoppingCart } from "react-icons/md";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [articulos, setArticulos] = useState(Articulos);
   const [mobileFilterView, setMobileFilterView] = useState(false);
-  const grades = ["1ro", "2do", "3ro", "4to", "5to", "6to"];
+  const grades = [
+    "1ro",
+    "2do",
+    "3ro",
+    "4to",
+    "5to",
+    "6to",
+    "7mo",
+    "8vo",
+    "9no",
+    "10mo",
+    "11vo",
+  ];
   const level = ["primaria", "secundaria"];
 
   useEffect(() => {
@@ -44,14 +56,6 @@ const Shop = () => {
           }
         });
       }
-
-      let valid =
-        (colegios === null || isValidColegios) &&
-        (grados === null || isValidGrados) &&
-        (niveles === null || isValidNiveles);
-
-      console.log(valid);
-
       return (
         (colegios === null || isValidColegios) &&
         (grados === null || isValidGrados) &&
@@ -64,28 +68,25 @@ const Shop = () => {
     if (orden !== null) {
       switch (orden) {
         case "most-popular":
-          setArticulos(filter);
           break;
         case "best-rating":
-          setArticulos(filter);
+          filter.sort((a, b) => b.review - a.review);
           break;
         case "newest":
-          setArticulos(filter);
           break;
         case "low-to-high":
           filter.sort((a, b) => a.precio - b.precio);
-          setArticulos(filter);
+
           break;
         case "high-to-low":
           filter.sort((a, b) => b.precio - a.precio);
 
-          setArticulos(filter);
           break;
         default:
-          setArticulos(filter);
           break;
       }
     }
+    setArticulos(filter);
   }, [searchParams]);
 
   const handleFilter = (filter, textFilter, type = "multi") => {
@@ -264,17 +265,53 @@ const Shop = () => {
         {articulos.map((articulo) => (
           <div
             key={articulo.id}
-            className="bg-white p-2 shadow-lg shadow-black/20 rounded-md   flex flex-col items-center justify-center"
+            className="bg-white p-2 shadow-lg shadow-black/20 rounded-md"
           >
-            <img
-              src={articulo.img}
-              alt={articulo.nombre}
-              className="w-40 aspect-square bg-slate-50 m-auto "
-            />
-            <h2 className="text-palette-green font-semibold text-base border-t-palette-yellow p-1 border-t-2 w-full">
-              {articulo.nombre}
-            </h2>
-            <p>${articulo.precio}</p>
+            <a
+              href={"./articulo/" + articulo.id}
+              className="flex flex-col items-center justify-center"
+            >
+              <img
+                src={articulo.img}
+                alt={articulo.nombre}
+                className="w-40 aspect-square bg-slate-50 m-auto "
+              />
+              <h2 className="text-palette-green font-semibold text-base border-t-palette-yellow p-1 border-t-2 w-full">
+                {articulo.nombre}
+              </h2>
+              <span className="flex text-amber-500 items-center pb-2">
+                {(() => {
+                  let stars = [];
+                  for (let i = 0; i < articulo.review; i++) {
+                    stars.push(<MdOutlineStar />);
+                  }
+                  return stars;
+                })()}
+              </span>
+            </a>
+            <div className="flex justify-between items-center w-full">
+              <div className="flex gap-1 ">
+                <button className="p-1 rounded-md bg-palette-green/90 hover:bg-palette-green aspect-square w-6 text-white text-xl text-medium">
+                  -
+                </button>
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  className="w-12 border-[1px] rounded-l-sm p-1"
+                />
+                <button className="p-1 rounded-md bg-palette-green/90 hover:bg-palette-green aspect-square w-6 text-white text-xl text-medium">
+                  +
+                </button>
+              </div>
+
+              <p className="font-semibold text-xl w-max text-right">
+                ${articulo.precio}
+              </p>
+            </div>
+            <button className="w-full bg-palette-yellow/90 hover:bg-palette-yellow flex items-center justify-center gap-2 rounded-md mt-2 p-2 hover:text-white text-medium">
+              <MdShoppingCart /> add to cart
+            </button>
           </div>
         ))}
       </div>

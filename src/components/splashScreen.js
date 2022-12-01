@@ -2,7 +2,7 @@ import React from "react";
 
 import Cervantes from "../assets/collages/cervantes.png";
 import Ciencias from "../assets/collages/ciencias.png";
-import MonteVerde from "../assets/collages/monteverde.jpg";
+import MonteVerde from "../assets/collages/monteverde.PNG";
 import Valle from "../assets/collages/valle.png";
 
 import Logo from "../assets/logo.png";

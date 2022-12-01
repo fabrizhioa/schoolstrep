@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         hero: "url('assets/hero.jpg')",
+        heroMobile:
+          "url('https://images.pexels.com/photos/5088188/pexels-photo-5088188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
         table:
           "url('https://cdn.shopify.com/s/files/1/0566/3132/8937/t/3/assets/pf-becad9ad--Copia-de-Sin-titulo.png?v=1619757640')",
       },
