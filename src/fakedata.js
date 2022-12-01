@@ -1,6 +1,6 @@
 import Cervantes from "./assets/collages/cervantes.png";
 import Ciencias from "./assets/collages/ciencias.png";
-import MonteVerde from "./assets/collages/monteverde.PNG";
+import MonteVerde from "./assets/collages/monteverde.png";
 import Valle from "./assets/collages/valle.png";
 
 export const Colegios = [
