@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import StringToUrl from "../adapters/StringToUrl";
 import { Colegios, Articulos } from "../fakedata";
 import { MdFilterListAlt, MdOutlineStar, MdShoppingCart } from "react-icons/md";
+import Counter from "../components/Counter";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -132,7 +133,7 @@ const Shop = () => {
         <h2 className="text-xl font-bold flex justify-between items-center relative">
           Filtros{" "}
           <button
-            className="absolute bg-slate-50 -mt-3 lg:mt-0  ml-2 lg:ml-0 p-2 lg:p-0 w-max text-base left-full lg:static"
+            className="fixed bg-palette-blue text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent   "
             type="button"
             onClick={() => setMobileFilterView(!mobileFilterView)}
           >
@@ -261,7 +262,7 @@ const Shop = () => {
           </summary>
         </details>
       </div>
-      <div className="min-h-full bg-slate-100 flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 w-full gap-2 text-center auto-rows-max p-2">
+      <div className="min-h-full bg-slate-100 flex flex-col md:grid md:grid-cols-2 xl:grid-cols-4 w-full gap-2 text-center auto-rows-max p-2">
         {articulos.map((articulo) => (
           <div
             key={articulo.id}
@@ -289,23 +290,10 @@ const Shop = () => {
                 })()}
               </span>
             </a>
-            <div className="flex justify-between items-center w-full">
-              <div className="flex gap-1 ">
-                <button className="p-1 rounded-md bg-palette-green/90 hover:bg-palette-green aspect-square w-6 text-white text-xl text-medium">
-                  -
-                </button>
-                <input
-                  type="number"
-                  name=""
-                  id=""
-                  className="w-12 border-[1px] rounded-l-sm p-1"
-                />
-                <button className="p-1 rounded-md bg-palette-green/90 hover:bg-palette-green aspect-square w-6 text-white text-xl text-medium">
-                  +
-                </button>
-              </div>
+            <div className="grid grid-cols-[40%_60%] justify-between items-center w-full">
+              <Counter def={0} />
 
-              <p className="font-semibold text-xl w-max text-right">
+              <p className="font-semibold text-xl w-full text-right">
                 ${articulo.precio}
               </p>
             </div>

@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import { cartElement, Articulos } from "../fakedata";
 import { IoMdTrash } from "react-icons/io";
 import Counter from "../components/Counter";
+
+// AGREGAR PALABRA ELIMINAR
 const Cart = () => {
   let total = 0;
-  const ref = useRef();
   return (
     <div className="min-h-screen w-full  antialiased overflow-hidden bg-slate-50 pt-20 relative snap-y snap-proximity">
       <div className="grid gap-2 md:grid-cols-[auto_max-content] auto-rows-max mx-auto max-w-screen-lg w-full">
@@ -21,7 +22,7 @@ const Cart = () => {
               return (
                 <div
                   key={el.id}
-                  className="border-b-2  grid grid-cols-2 lg:grid-cols-5 items-center justify-center w-full bg-white rounded-md p-1"
+                  className="border-b-2  grid grid-cols-2 lg:grid-cols-5 items-center justify-center w-full bg-white rounded-md p-1 gap-2"
                 >
                   <img
                     src={el.img}
@@ -32,12 +33,13 @@ const Cart = () => {
                   <p className="text-center font-medium text-xl text-palette-blue ">
                     {el.precio}$
                   </p>
-                  <Counter def={element.itemCount} />
-                  <div className="text-center col-span-full lg:col-span-1">
-                    <button className="text-red-600 text-xl text-center">
-                      <IoMdTrash />
-                    </button>
+                  <div>
+                    <Counter def={element.itemCount} />
                   </div>
+
+                  <button className="bg-red-600 text-white text-lg text-center col-span-full lg:col-span-1  w-full lg:w-max flex items-center justify-center rounded-md p-2 py-2">
+                    <IoMdTrash /> Eliminar
+                  </button>
                 </div>
               );
             })}
