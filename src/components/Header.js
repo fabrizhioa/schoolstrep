@@ -41,7 +41,7 @@ const Header = () => {
               Home
             </NavLink>
             <NavLink
-              to="/about"
+              to="/nosotros"
               className={({ isActive }) =>
                 isActive
                   ? "pb-1 px-1 text-center border-b-2 border-b-palette-green outline-none"

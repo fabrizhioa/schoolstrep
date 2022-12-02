@@ -1,5 +1,8 @@
 import React from "react";
-
+import Image from "../assets/about.png";
+import Image02 from "../assets/about02.png";
+import Image03 from "../assets/about03.png";
+import Image04 from "../assets/about04.png";
 const About = () => {
   return (
     <div className="pt-20 min-h-screen w-full  bg-white">
@@ -26,11 +29,7 @@ const About = () => {
               </span>
             </p>
           </div>
-          <img
-            src="https://cdn.shopify.com/s/files/1/0566/3132/8937/t/3/assets/18-1641961544491.png?v=1641961548"
-            alt=""
-            className="mx-auto"
-          />
+          <img src={Image} alt="" className="mx-auto" />
         </div>
         <div className="flex flex-col gap-4 items-center justify-center min-h-screen">
           <h2 className="w-full block text-2xl font-bold text-center text-palette-green">
@@ -38,11 +37,7 @@ const About = () => {
           </h2>
           <div className="grid grid-cols-3 items-center justify-center auto-rows-max">
             <div>
-              <img
-                src="https://cdn.shopify.com/s/files/1/2170/1117/t/10/assets/pf-ed1713fa--JSN-Kidzone-Home-3.svg?v=1616554997"
-                alt="icono"
-                className="mx-auto w-30"
-              />
+              <img src={Image02} alt="icono" className="mx-auto w-32" />
               <h3 className="text-lg font-bold text-center text-palette-yellow">
                 Paquetes Institucionales
               </h3>
@@ -54,11 +49,7 @@ const About = () => {
             </div>
 
             <div>
-              <img
-                src="https://cdn.shopify.com/s/files/1/2170/1117/t/10/assets/pf-1713fa6f--JSN-Kidzone-Home-4.svg?v=1616555008"
-                alt="icono"
-                className="mx-auto w-30"
-              />
+              <img src={Image03} alt="icono" className="mx-auto w-32" />
               <h3 className="text-lg font-bold text-center text-palette-yellow">
                 Envio a domicilio
               </h3>
@@ -69,11 +60,7 @@ const About = () => {
             </div>
 
             <div>
-              <img
-                src="https://cdn.shopify.com/s/files/1/2170/1117/t/10/assets/pf-13fa6fff--JSN-Kidzone-Home-5.svg?v=1616555021"
-                alt="icono"
-                className="mx-auto w-30"
-              />
+              <img src={Image04} alt="icono" className="mx-auto w-32" />
               <h3 className="text-lg font-bold text-center text-palette-yellow">
                 Servicio de Calidad
               </h3>
