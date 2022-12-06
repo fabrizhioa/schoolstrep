@@ -8,11 +8,11 @@ const Header = () => {
     <header className="p-4 shadow-sm shadow-grey-300 bg-slate-50 fixed h-20 grid items-center text-palette-blue w-full top-0 left-0 z-10">
       {search ? (
         <div className="flex w-full max-w-screen-xl  mx-auto justify-center">
-          <div className="flex items-center w-3/5 border-[1px]  rounded-md px-2 py-2 border-palette-white ">
+          <div className="flex items-center w-3/5 border-[1px]  rounded-md px-2 py-2 bg-palette-white ">
             <input
               type="text"
               placeholder="search"
-              className=" outline-none w-full bg-transparent  border-0 placeholder:text-slate-50"
+              className=" outline-none w-full bg-transparent  border-0 placeholder:text-palette-green"
             />
             <button type="button" className="text-xl outline-none">
               <MdSearch />

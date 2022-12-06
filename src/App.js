@@ -18,9 +18,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/nosotros" element={<About />} loader={<Splash />} />
-        <Route path="/articulo/:id" element={<Article />} loader={<Splash />} />
-        <Route path="/cart" element={<Cart />} loader={<Splash />} />
+        <Route path="/nosotros" element={<About />} />
+        <Route path="/articulo/:id" element={<Article />} />
+        <Route path="/cart" element={<Cart />} />
         <Route
           path="/shop"
           element={

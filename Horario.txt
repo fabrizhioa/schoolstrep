@@ -29,3 +29,24 @@ Parada 1/12/2022  1:43pm
 
 Inicio 1/12/2022  6:34am
 Parada 1/12/2022 7:43am
+
+Inicio 2/12/2022 4:05pm
+Parada 2/12/2022 4:19pm
+
+Horas durante la semana => 3 + 5:25 + 4:13 + 2:20 + 1:09 = 16:07(durante la semana)
+
+Mejorar el tiempo de recepcion de actividades 
+
+Inicio 3/12/2022 3:17pm
+Parada 3/12/2022 8:48pm
+
+Inicio 4/12/2022 9:13am
+Parada 4/12/2022 12:28pm
+
+Inicio 4/12/2022 6:14pm
+Parada 4/12/2022 9:00pm
+
+Horas durante el fin de semana => 5:31 + 3:15 + 2:46 = 11:32(durante el fin de semana)
+
+Incio 5/12/2022 3:40pm
+Parada 5/12/2022 6pm
