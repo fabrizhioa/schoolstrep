@@ -76,7 +76,7 @@ const Home = () => {
         <section className="bg-heroMobile min-h-[50vh] md:bg-hero bg-cover md:min-h-screen pt-24 px-4 pb-4 flex items-center snap-end">
           <div className=" mx-auto max-w-screen-xl w-full">
             <div className="flex flex-col gap-3 justify-center">
-              <h1 className="text-white drop-shadow-2xl   z-0 font-black text-2xl md:text-7xl uppercase">
+              <h1 className="text-white drop-shadow-2xl z-0 font-black text-2xl md:text-7xl uppercase">
                 <span>Bienvenidos al</span> <br /> CICLO ESCOLAR <br />
                 2022 - 2023
               </h1>
