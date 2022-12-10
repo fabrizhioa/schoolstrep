@@ -39,6 +39,7 @@ export const Articulos = [
       grados: ["1ro", "2do"],
       niveles: ["secundaria"],
     },
+    existencia: 20,
   },
   {
     id: "00002a",

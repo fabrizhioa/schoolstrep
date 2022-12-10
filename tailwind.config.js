@@ -12,9 +12,9 @@ module.exports = {
       },
       colors: {
         palette: {
-          yellow: "#FEC037",
-          green: "#0B846D",
-          blue: "#051535",
+          ext: "#FEC037",
+          primary: "#0ea5e9",
+          second: "#051535",
           white: "#FFFFFF",
         },
       },

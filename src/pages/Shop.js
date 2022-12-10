@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import StringToUrl from "../adapters/StringToUrl";
 import { Colegios, Articulos } from "../fakedata";
-import { MdFilterListAlt, MdOutlineStar, MdShoppingCart } from "react-icons/md";
-import Counter from "../components/Counter";
+import { MdFilterListAlt } from "react-icons/md";
+import SelectOrder from "../components/SelectOrder";
+import FilterDetail from "../components/FilterDetail";
+import ShopArticle from "../components/ShopArticle";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -124,44 +126,26 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen w-full h-full flex flex-col md:flex-row pt-20 relative">
+    <div className="min-h-screen w-full h-full grid md:grid-rows-[max-content_auto] lg:grid-cols-[minmax(0,290px)_auto] pt-20 relative">
+      <div className="bg-slate-50 w-full col-span-full h-max flex justify-end">
+        <SelectOrder handleFilter={handleFilter} />
+      </div>
       <div
         className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed lg:static  transition-all  top-20 ${
           mobileFilterView ? "left-0" : "right-full"
         }`}
       >
-        <h2 className="text-xl font-bold flex justify-between items-center relative">
+        <h2 className="text-xl text-palette-second font-bold flex justify-between items-center relative">
           Filtros{" "}
           <button
-            className="fixed bg-palette-blue text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent   "
+            className="fixed bg-palette-second text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent lg:text-palette-second   "
             type="button"
             onClick={() => setMobileFilterView(!mobileFilterView)}
           >
             <MdFilterListAlt className="" />
           </button>
         </h2>
-        <details>
-          <summary className="text-base font-semibold text-palette-green cursor-pointer">
-            Orden
-          </summary>
-          <div>
-            <select
-              onChange={(e) => handleFilter("orden", e.target.value, "unique")}
-              className="bg-white px-2 py-1 w-full cursor-pointer"
-            >
-              <option value="">Por defecto</option>
-              <option value="most-popular">Most Popular</option>
-              <option value="best-rating">Best Rating</option>
-              <option value="newest">Newest</option>
-              <option value="low-to-high">Price: Low to High</option>
-              <option value="high-to-low">Price: High to Low</option>
-            </select>
-          </div>
-        </details>
-        <details>
-          <summary className="text-base font-semibold text-palette-green cursor-pointer">
-            Colegios
-          </summary>
+        <FilterDetail title="Colegios">
           <div>
             {Colegios.map((colegio, key) => {
               return (
@@ -169,7 +153,7 @@ const Shop = () => {
                   <input
                     type="checkbox"
                     name="filter-collage"
-                    className="accent-palette-blue cursor-pointer"
+                    className="accent-palette-second cursor-pointer"
                     key={key}
                     id={"colegio" + colegio.id}
                     checked={
@@ -193,11 +177,8 @@ const Shop = () => {
               );
             })}
           </div>
-        </details>
-        <details>
-          <summary className="text-base font-semibold text-palette-green cursor-pointer">
-            Grado/Año academico
-          </summary>
+        </FilterDetail>
+        <FilterDetail title="Grado/Año Academico">
           <div className="grid gap-x-4 grid-cols-[max-content_max-content] auto-rows-auto">
             {grades.map((grado, key) => {
               return (
@@ -205,7 +186,7 @@ const Shop = () => {
                   <input
                     type="checkbox"
                     name="filter-collage"
-                    className="accent-palette-blue cursor-pointer"
+                    className="accent-palette-second cursor-pointer"
                     id={"grado" + grado}
                     checked={
                       searchParams.get("grados") !== null &&
@@ -223,11 +204,8 @@ const Shop = () => {
               );
             })}
           </div>
-        </details>
-        <details>
-          <summary className="text-base font-semibold text-palette-green cursor-pointer">
-            Nivel academico
-          </summary>
+        </FilterDetail>
+        <FilterDetail title="Nivel Academico">
           {level.map((lvl, key) => {
             return (
               <div
@@ -237,7 +215,7 @@ const Shop = () => {
                 <input
                   type="checkbox"
                   name="filter-collage"
-                  className="accent-palette-blue cursor-pointer"
+                  className="accent-palette-second cursor-pointer"
                   id={"nivel" + lvl}
                   checked={
                     searchParams.get("niveles") !== null &&
@@ -254,53 +232,13 @@ const Shop = () => {
               </div>
             );
           })}
-        </details>
+        </FilterDetail>
 
-        <details>
-          <summary className="text-base font-semibold text-palette-green cursor-pointer">
-            Otros filtros
-          </summary>
-        </details>
+        <FilterDetail title="Otros Filtros"></FilterDetail>
       </div>
-      <div className="min-h-full bg-slate-100 flex flex-col md:grid md:grid-cols-2 xl:grid-cols-4 w-full gap-2 text-center auto-rows-max p-2">
+      <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 text-center p-2 justify-evenly">
         {articulos.map((articulo) => (
-          <div
-            key={articulo.id}
-            className="bg-white p-2 shadow-lg shadow-black/20 rounded-md"
-          >
-            <a
-              href={"./articulo/" + articulo.id}
-              className="flex flex-col items-center justify-center"
-            >
-              <img
-                src={articulo.img}
-                alt={articulo.nombre}
-                className="w-40 aspect-square bg-slate-50 m-auto "
-              />
-              <h2 className="text-palette-green font-semibold text-base border-t-palette-yellow p-1 border-t-2 w-full">
-                {articulo.nombre}
-              </h2>
-              <span className="flex text-amber-500 items-center pb-2">
-                {(() => {
-                  let stars = [];
-                  for (let i = 0; i < articulo.review; i++) {
-                    stars.push(<MdOutlineStar />);
-                  }
-                  return stars;
-                })()}
-              </span>
-            </a>
-            <div className="grid grid-cols-[40%_60%] justify-between items-center w-full">
-              <Counter def={0} />
-
-              <p className="font-semibold text-xl w-full text-right">
-                ${articulo.precio}
-              </p>
-            </div>
-            <button className="w-full bg-palette-yellow/90 hover:bg-palette-yellow flex items-center justify-center gap-2 rounded-md mt-2 p-2 hover:text-white text-medium">
-              <MdShoppingCart /> add to cart
-            </button>
-          </div>
+          <ShopArticle articulo={articulo} key={articulo.id} />
         ))}
       </div>
     </div>

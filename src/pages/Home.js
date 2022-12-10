@@ -20,7 +20,7 @@ const Home = () => {
               <span className="w-full py-1 block font-medium">Token</span>
               <input
                 type="text"
-                className="border-[1px] rounded-md outline-none p-1 w-full focus:border-palette-yellow hover:border-palette-blue"
+                className="border-[1px] rounded-md outline-none p-1 w-full focus:border-palette-ext hover:border-palette-second"
                 name="tkn"
               />
             </div>
@@ -32,7 +32,7 @@ const Home = () => {
               <select
                 name="colegios"
                 id=""
-                className="p-1 border-[1px] rounded-md w-full focus:border-palette-yellow hover:border-palette-blue cursor-pointer"
+                className="p-1 border-[1px] rounded-md w-full focus:border-palette-ext hover:border-palette-second cursor-pointer"
               >
                 {Colegios.map((colegio, key) => (
                   <option value={StringToUrl(colegio.nombre)}>
@@ -48,7 +48,7 @@ const Home = () => {
               </span>
               <select
                 name="grado"
-                className="p-1 w-full  border-[1px] rounded-md focus:border-palette-yellow hover:border-palette-blue  cursor-pointer"
+                className="p-1 w-full  border-[1px] rounded-md focus:border-palette-ext hover:border-palette-second  cursor-pointer"
               >
                 <option value="1ro">1 º</option>
                 <option value="2ro">2 º</option>
@@ -64,7 +64,7 @@ const Home = () => {
               </select>
             </div>
             <div>
-              <button className="w-full bg-palette-green text-white px-4 py-2 rounded-md mt-3 ">
+              <button className="w-full bg-palette-primary text-white px-4 py-2 rounded-md mt-3 ">
                 Ir a la tienda
               </button>
             </div>
@@ -72,7 +72,7 @@ const Home = () => {
         </Modal>
       )}
       <Splash />
-      <div className="min-h-screen w-full flex flex-col antialiased overflow-hidden bg-palette-blue relative snap-y snap-proximity">
+      <div className="min-h-screen w-full flex flex-col antialiased overflow-hidden bg-palette-second relative snap-y snap-proximity">
         <section className="bg-heroMobile min-h-[50vh] md:bg-hero bg-cover md:min-h-screen pt-24 px-4 pb-4 flex items-center snap-end">
           <div className=" mx-auto max-w-screen-xl w-full">
             <div className="flex flex-col gap-3 justify-center">
@@ -84,16 +84,16 @@ const Home = () => {
               <button
                 type="button"
                 onClick={() => setVerModal(true)}
-                className="rounded-full px-3 py-1 md:px-8 md:py-3 bg-palette-yellow hover:bg-amber-500 shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max text-sm  md:text-xl "
+                className="rounded-full px-3 py-1 md:px-8 md:py-3 bg-palette-ext hover:bg-amber-500 shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max text-sm  md:text-xl "
               >
                 Comprar ahora
               </button>
             </div>
           </div>
         </section>
-        <section className="md:min-h-screen  flex items-center snap-end">
+        <section className="md:min-h-screen  flex items-center snap-end bg-gradient-to-tr from-slate-900  to-blue-900">
           <div className="flex flex-col md:flex-row gap-4 p-4  max-w-screen-xl flex-wrap mx-auto w-full ">
-            <h3 className="text-center text-4xl font-bold w-full text-palette-yellow mb-8 uppercase ">
+            <h3 className="text-center text-4xl font-bold w-full text-palette-ext mb-8 uppercase ">
               Colegios
             </h3>
             <div className="grid grid-cols-2 gap-4 md:flex md:flex-row md:gap-8 items-center justify-between w-full">
@@ -107,8 +107,11 @@ const Home = () => {
                     <img
                       src={colegio.img}
                       alt={colegio.nombre}
-                      className=" rounded-t-xl aspect-square w-full p-2 grayscale group-hover:grayscale-0 group-hover:drop-shadow-md"
+                      className=" rounded-t-xl aspect-square w-full p-4 grayscale group-hover:grayscale-0 group-hover:drop-shadow-md group-hover:scale-105"
                     />
+                    <h3 className="group-hover:text-white text-gray-800 text-center font-bold uppercase text-xl">
+                      {colegio.nombre}
+                    </h3>
                   </div>
                 </Link>
               ))}
@@ -119,20 +122,20 @@ const Home = () => {
           <div className="max-w-screen-xl w-full mx-auto flex md:flex-row flex-col text-center md:text-left p-4 gap-2 items-center justify-center">
             <img src={Image2} alt="" />
             <div className="flex gap-3 flex-col">
-              <span className="text-palette-yellow text-lg font-medium">
+              <span className="text-palette-ext text-lg font-medium">
                 Guía de navegación
               </span>
               <h2 className="text-6xl font-bold">Manual de Compra</h2>
               <p className="text-lg">
                 Consulta el{" "}
-                <span className="text-palette-green font-medium">
+                <span className="text-palette-primary font-medium">
                   manual en PDF
                 </span>{" "}
                 para guiarte en el proceso de compra.
               </p>
               <a
                 href="/#"
-                className="rounded-full px-8 py-3 bg-palette-yellow/90 hover:bg-palette-yellow shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max text-xl mx-auto"
+                className="rounded-full px-8 py-3 bg-palette-ext/90 hover:bg-palette-ext shadow-md active:shadow-none shadow-black/10 text-palette-white font-medium w-max text-xl mx-auto"
               >
                 Descargar PDF
               </a>

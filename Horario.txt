@@ -53,3 +53,27 @@ Parada 5/12/2022 6pm
 
 Inicio 6/12/2022 3:00pm
 Parada 6/12/2022 3:30pm
+
+--------------------------------------------------------------------------------------------
+
+Inicio 6/12/2022 8:40pm
+Parada 6/12/2022 11:38pm
+
+Inicio 7/12/2022 9:13am
+
+7/12/2022 11:54am => Aviso: Horas en deuda canceladas 
+
+Parada 7/12/2022 3:23pm
+
+Horas de la semana en camino 15:00hrs - 3:29hrs => 11:31
+
+
+Inicio 9/12/2022 12:12pm
+Parada 9/12/2022 5:25pm
+
+Inicio 10/12/2022 10:14am
+Parada 10/12/2022 14:30pm
+
+Horas de la semana en deuda 20:31 - 3:13 - 4:16 => 13:02hrs
+
+
