@@ -22,15 +22,15 @@ const Cart = () => {
               return (
                 <div
                   key={el.id}
-                  className="border-b-2  grid grid-cols-2 lg:grid-cols-[max-content_auto_auto_max-content] items-center w-full bg-white rounded-md p-1 gap-2"
+                  className="border-b-2  grid grid-cols-2 lg:grid-cols-4 items-center w-full bg-white rounded-md p-1 gap-2"
                 >
                   <img
                     src={el.img}
                     alt=""
                     className="w-full lg:w-20 aspect-square m-auto"
                   />
-                  <h4 className="font-medium text-center">{el.nombre}</h4>
-                  <p className="text-center text-xl text-palette-blue font-bold ">
+                  <h4 className="font-medium text-start ">{el.nombre}</h4>
+                  <p className="text-center text-xl text-palette-blue font-bold">
                     ${el.precio}
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-2 p-1">
@@ -60,8 +60,8 @@ const Cart = () => {
               <p>Inpuestos </p>
               <p>${total * 0.16}</p>
             </div>
-            <div className="flex justify-between py-2 items-center font-medium border-b-2">
-              <p>Subtotal </p>
+            <div className="flex justify-between py-2 items-center font-medium border-b-4 border-cyan-800">
+              <p>Envio </p>
               <p>${14}</p>
             </div>
             <div className="font-medium text-palette-blue text-xl flex justify-between py-2">
