@@ -89,6 +89,37 @@ export const Articulos = [
   },
 ];
 
+export const Orders = [
+  {
+    id: "123123123",
+    total: 550,
+    shipping: 5,
+    shippingAddress: {
+      direccion: "Floyd Miles",
+      ciudad: "Toronto",
+      estado: "Cynthia Pass",
+      zipCode: "7363",
+      apartamento: "ON N3Y 4H8",
+    },
+    shippingContact: {
+      email: "joe@doe.com",
+      phone: "+1 117 1212314",
+    },
+    elements: [
+      {
+        id: "00001a",
+        count: "2",
+        shippingStatus: 2,
+      },
+      {
+        id: "00001b",
+        count: "2",
+        shippingStatus: 1,
+      },
+    ],
+  },
+];
+
 export const cartElement = [
   { itemId: "00001b", itemCount: 2 },
   { itemId: "00002b", itemCount: 1 },

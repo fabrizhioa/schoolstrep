@@ -22,22 +22,24 @@ const Cart = () => {
               return (
                 <div
                   key={el.id}
-                  className="border-b-2  grid grid-cols-2 lg:grid-cols-4 items-center w-full bg-white rounded-md p-1 gap-2"
+                  className="border-b-2  grid grid-cols-[30%_70%] items-center w-full bg-white rounded-md p-1 gap-2"
                 >
                   <img
                     src={el.img}
                     alt=""
                     className="w-full lg:w-20 aspect-square m-auto"
                   />
-                  <h4 className="font-medium text-start ">{el.nombre}</h4>
-                  <p className="text-center text-xl text-palette-blue font-bold">
-                    ${el.precio}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-center gap-2 p-1">
-                    <Counter def={element.itemCount} />
-                    <button className="bg-red-600 text-white  text-center col-span-full lg:col-span-1  w-max lg:w-max flex items-center justify-center rounded-md p-3">
-                      <IoMdTrash />
-                    </button>
+                  <div className="grid gap-2 lg:grid-cols-3">
+                    <h4 className="font-semibold text-center ">{el.nombre}</h4>
+                    <p className="text-center text-xl text-palette-blue font-bold">
+                      ${el.precio}
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center gap-2 p-1">
+                      <Counter def={element.itemCount} />
+                      <button className="bg-red-600 text-white  text-center col-span-full lg:col-span-1  w-max lg:w-max flex items-center justify-center rounded-md p-2">
+                        <IoMdTrash />
+                      </button>
+                    </div>
                   </div>
                 </div>
               );

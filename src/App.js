@@ -9,6 +9,8 @@ import Splash from "./components/splashScreen";
 import Cart from "./pages/Cart";
 import Article from "./pages/Article";
 import About from "./pages/About";
+import CheckOut from "./pages/CheckOut";
+import Details from "./pages/Details";
 
 const Shop = React.lazy(() => import("./pages/Shop.js"));
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/nosotros" element={<About />} />
         <Route path="/articulo/:id" element={<Article />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/orderDetail" element={<Details />} />
         <Route
           path="/shop"
           element={

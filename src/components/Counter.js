@@ -6,7 +6,7 @@ const Counter = ({ name, def = 1, max, className = "" }) => {
   return (
     <div className="flex items-center justify-center">
       <button
-        className="bg-palette-primary hover:bg-palette-second text-white p-3  rounded-md w-max mx-auto font-medium"
+        className="bg-palette-primary hover:bg-palette-second text-white p-2  rounded-md w-max mx-auto font-medium"
         onClick={() => value - 1 >= def && setValue(value - 1)}
       >
         <MdRemove />
@@ -19,7 +19,7 @@ const Counter = ({ name, def = 1, max, className = "" }) => {
         readOnly
       />
       <button
-        className="bg-palette-primary hover:bg-palette-second text-white p-3 rounded-md w-max mx-auto font-medium"
+        className="bg-palette-primary hover:bg-palette-second text-white p-2 rounded-md w-max mx-auto font-medium"
         onClick={() => value + 1 <= max && setValue(value + 1)}
       >
         <MdAdd />
