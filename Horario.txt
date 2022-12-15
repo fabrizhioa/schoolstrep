@@ -74,7 +74,7 @@ Parada 9/12/2022 5:25pm
 Inicio 10/12/2022 10:14am
 Parada 10/12/2022 14:30pm
 
-Horas de la semana en deuda 20:31 - 3:13 - 4:16 => 13:02hrs
+Horas de la semana en deuda 20:31 - 5:13 - 4:16 => 11:02hrs
 
 -> De ahora en adelante trabajare horarios fijos con la intencion de ser mayormente productivo con un minimo de 1hr 
 
@@ -96,8 +96,12 @@ Hasta este punto ya me deben 1 semana de trabajo
 Inicio 14/12/2022 2:30pm
 Parada 14/12/2022 7:30pm 
 
---> Horas durante la semana 5hrs debo 10hrs
+--> Horas durante la semana 7hrs debo 8hrs
 
+Inicio 15/12/2022 12:00pm
+Parada 15/12/2022 2:00pm
+
+--> Horas durante la semana 9 debo 11hrs
 
 
 

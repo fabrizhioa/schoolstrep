@@ -7,21 +7,20 @@ const Question = ({ title, children }) => {
     <div className="p-2 transition-all bg-slate-200 rounded-sm">
       <div
         onClick={() => setShow(!show)}
-        className="font-semibold flex items-center gap-2 cursor-pointer text-palette-second "
+        className="font-semibold inline-flex transition-all items-center gap-2 cursor-pointer text-palette-second "
       >
         <span className="text-xl">{show ? <MdRemove /> : <MdAdd />}</span>{" "}
         {title}
       </div>
-      {show && (
-        <p
-          className={
-            (!show && "h-0") +
-            " border-t-2 border-palette-primary transition-all mt-2 "
-          }
-        >
-          {children}
-        </p>
-      )}
+
+      <p
+        className={
+          (!show ? "h-0 border-t-0" : "border-t-2 mt-2") +
+          " border-palette-primary transition-all duration-500 overflow-hidden"
+        }
+      >
+        {children}
+      </p>
     </div>
   );
 };

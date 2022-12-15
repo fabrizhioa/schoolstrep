@@ -10,7 +10,7 @@ const Cart = () => {
     <div className="min-h-screen w-full  antialiased overflow-hidden bg-slate-50 pt-20 relative snap-y snap-proximity">
       <div className="grid gap-4   md:grid-cols-[auto_max-content] auto-rows-max mx-auto max-w-screen-xl w-full">
         <h2 className="text-2xl font-bold p-2 col-span-full">Shopping Cart</h2>
-        <div className=" order-2 md:order-1">
+        <div>
           <div className="flex flex-col gap-2">
             {cartElement.map((element) => {
               const el = Articulos.find(
@@ -46,7 +46,7 @@ const Cart = () => {
             })}
           </div>
         </div>
-        <div className="p-2 h-max flex flex-col order-1 md:order-2  shadow-sm shadow-black/20 bg-white rounded-md">
+        <div className="p-2 h-max flex flex-col  shadow-sm shadow-black/20 bg-white rounded-md">
           <div className=" p-2 rounded-t-md bg-white">
             <h3 className=" text-xl font-bold text-palette-primary">
               Resumen del pedido{" "}

@@ -10,7 +10,7 @@ const CheckOut = () => {
   return (
     <div className="min-h-screen w-full flex flex-col antialiased overflow-hidden bg-white relative snap-y snap-proximity">
       <form className="pt-24 px-4 pb-4 grid md:grid-cols-2 max-w-screen-xl mx-auto w-full">
-        <div className="order-2 md:order-1">
+        <div className="lg:p-4">
           <div className="p-2 pb-6 border-b-2 ">
             <h2 className="col-span-full text-palette-primary text-xl font-bold">
               Información de contacto
@@ -97,7 +97,7 @@ const CheckOut = () => {
             </div>
           </div>
         </div>
-        <div className="bg-slate-50 p-2 rounded-md h-max order-1 md:order-2">
+        <div className="bg-slate-50 p-2 lg:p-6 rounded-md h-max">
           <h2 className="col-span-full text-palette-primary text-xl font-bold">
             Resumen del pedido
           </h2>
@@ -120,15 +120,14 @@ const CheckOut = () => {
                     alt=""
                     className="w-full aspect-square m-auto"
                   />
-                  <div className="grid lg:grid-cols-2 gap-2 p-2">
+                  <div className="grid gap-2 p-2">
                     <div>
                       <h4 className="font-semibold">{el.nombre}</h4>
                       <p className="text-xl text-palette-blue font-bold">
                         ${el.precio}
                       </p>
                     </div>
-
-                    <div className="flex flex-wrap items-center justify-center gap-2 p-1">
+                    <div className="flex flex-wrap items-center gap-2 p-1 w-full">
                       <Counter def={element.itemCount} />
                       <button className="bg-red-600 text-white  text-center col-span-full lg:col-span-1  w-max lg:w-max flex items-center justify-center rounded-md p-2">
                         <IoMdTrash />

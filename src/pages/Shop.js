@@ -178,32 +178,35 @@ const Shop = () => {
             })}
           </div>
         </FilterDetail>
-        <FilterDetail title="Grado/Año Academico">
-          <div className="grid gap-x-4 grid-cols-[max-content_max-content] auto-rows-auto">
-            {grades.map((grado, key) => {
-              return (
-                <div key={key} className="flex gap-1 py-1 px-2 w-full">
-                  <input
-                    type="checkbox"
-                    name="filter-collage"
-                    className="accent-palette-second cursor-pointer"
-                    id={"grado" + grado}
-                    checked={
-                      searchParams.get("grados") !== null &&
-                      searchParams
-                        .get("grados")
-                        .split("_")
-                        .includes(StringToUrl(grado))
-                    }
-                    onChange={() => handleFilter("grados", StringToUrl(grado))}
-                  />
-                  <span className="font-medium" htmlFor={"grado" + grado}>
-                    {grado}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+        <FilterDetail
+          title="Grado/Año Academico"
+          childrenCN={
+            "inline-grid h-max grid-cols-[max-content_max-content] auto-rows-max"
+          }
+        >
+          {grades.map((grado, key) => {
+            return (
+              <div key={key} className="flex gap-1 py-1 px-2 w-full">
+                <input
+                  type="checkbox"
+                  name="filter-collage"
+                  className="accent-palette-second cursor-pointer"
+                  id={"grado" + grado}
+                  checked={
+                    searchParams.get("grados") !== null &&
+                    searchParams
+                      .get("grados")
+                      .split("_")
+                      .includes(StringToUrl(grado))
+                  }
+                  onChange={() => handleFilter("grados", StringToUrl(grado))}
+                />
+                <span className="font-medium" htmlFor={"grado" + grado}>
+                  {grado}
+                </span>
+              </div>
+            );
+          })}
         </FilterDetail>
         <FilterDetail title="Nivel Academico">
           {level.map((lvl, key) => {
@@ -236,7 +239,7 @@ const Shop = () => {
 
         <FilterDetail title="Otros Filtros"></FilterDetail>
       </div>
-      <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 text-center p-2 justify-evenly">
+      <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 md:gap-4 lg:gap-8 text-center p-2 ">
         {articulos.map((articulo) => (
           <ShopArticle articulo={articulo} key={articulo.id} />
         ))}

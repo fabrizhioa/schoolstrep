@@ -27,9 +27,18 @@ module.exports = {
             top: "-150%",
           },
         },
+        openFilter: {
+          "0%": {
+            transform: "scaleY(0)",
+          },
+          "100%": {
+            transform: "scaleY(1)",
+          },
+        },
       },
       animation: {
         moveOut: "moveOut 2s 1s ease forwards",
+        openFilter: "openFilter 150ms ease forwards",
       },
       minHeight: {
         heroHeader: "calc(100vh - 5rem)",
