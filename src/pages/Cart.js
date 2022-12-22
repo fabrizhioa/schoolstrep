@@ -72,7 +72,7 @@ const Cart = () => {
           </div>
           <div className=" p-2 rounded-b-md bg-white">
             <a
-              href="./#"
+              href="./checkout"
               className="p-2 bg-palette-second hover:bg-palette-primary rounded-md text-white block text-center bg-prim"
             >
               PROCEED CHECKOUT
