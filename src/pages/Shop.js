@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import StringToUrl from "../adapters/StringToUrl";
-import { Colegios, Articulos } from "../fakedata";
+import { Articulos } from "../fakedata";
 import { MdFilterListAlt } from "react-icons/md";
+
+//Componentes
 import SelectOrder from "../components/SelectOrder";
 import FilterDetail from "../components/FilterDetail";
 import ShopArticle from "../components/ShopArticle";
+import ModalForm from "../components/ModalForm";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [articulos, setArticulos] = useState(Articulos);
   const [mobileFilterView, setMobileFilterView] = useState(false);
+  const [verModal, setVerModal] = useState(false);
   const grades = [
     "1ro",
     "2do",
@@ -25,8 +29,14 @@ const Shop = () => {
     "11vo",
   ];
   const level = ["primaria", "secundaria"];
-
+  const estudiantes =
+    sessionStorage.getItem("estudiantes") !== null
+      ? JSON.parse(sessionStorage.getItem("estudiantes"))
+      : [];
   useEffect(() => {
+    if (sessionStorage.getItem("estudiantes") === null) {
+      setVerModal(true);
+    }
     let filter = Articulos.filter((articulo) => {
       let colegios = searchParams.get("colegios");
       let grados = searchParams.get("grados");
@@ -126,125 +136,125 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen w-full h-full grid md:grid-rows-[max-content_auto] lg:grid-cols-[minmax(0,290px)_auto] pt-20 relative">
-      <div className="bg-slate-50 w-full col-span-full h-max flex justify-end">
-        <SelectOrder handleFilter={handleFilter} />
-      </div>
-      <div
-        className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed lg:static  transition-all  top-20 ${
-          mobileFilterView ? "left-0" : "right-full"
-        }`}
-      >
-        <h2 className="text-xl text-palette-second font-bold flex justify-between items-center relative">
-          Filtros{" "}
-          <button
-            className="fixed bg-palette-second text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent lg:text-palette-second   "
-            type="button"
-            onClick={() => setMobileFilterView(!mobileFilterView)}
+    <>
+      {verModal && <ModalForm setVerModal={setVerModal} />}
+      <div className="min-h-screen w-full h-full grid md:grid-rows-[max-content_auto] lg:grid-cols-[minmax(0,290px)_auto] pt-20 relative">
+        <div className="bg-slate-50 w-full col-span-full h-max flex justify-end">
+          <SelectOrder handleFilter={handleFilter} />
+        </div>
+        <div
+          className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed lg:static  transition-all  top-20 ${
+            mobileFilterView ? "left-0" : "right-full"
+          }`}
+        >
+          <h2 className="text-xl text-palette-second font-bold flex justify-between items-center relative">
+            Filtros{" "}
+            <button
+              className="fixed bg-palette-second text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent lg:text-palette-second   "
+              type="button"
+              onClick={() => setMobileFilterView(!mobileFilterView)}
+            >
+              <MdFilterListAlt className="" />
+            </button>
+          </h2>
+          <FilterDetail title="Estudiantes">
+            <div>
+              {estudiantes.map((estudiante, key) => {
+                return (
+                  <div key={key} className="flex gap-1 px-2 py-1 w-full">
+                    <input
+                      type="checkbox"
+                      name="filter-collage"
+                      className="accent-palette-second cursor-pointer"
+                      key={key}
+                      id={"estudiante" + key}
+                      checked={
+                        searchParams.get("grados") !== null &&
+                        searchParams
+                          .get("grados")
+                          .split("_")
+                          .includes(StringToUrl(estudiante.grado))
+                      }
+                      onChange={() =>
+                        handleFilter("grados", StringToUrl(estudiante.grado))
+                      }
+                    />
+                    <span className="font-medium" htmlFor={"estudiante" + key}>
+                      {estudiante.nombre}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </FilterDetail>
+          <FilterDetail
+            title="Grado/Año Academico"
+            childrenCN={
+              "inline-grid h-max grid-cols-[max-content_max-content] auto-rows-max"
+            }
           >
-            <MdFilterListAlt className="" />
-          </button>
-        </h2>
-        <FilterDetail title="Colegios">
-          <div>
-            {Colegios.map((colegio, key) => {
+            {grades.map((grado, key) => {
               return (
-                <div key={key} className="flex gap-1 px-2 py-1 w-full">
+                <div key={key} className="flex gap-1 py-1 px-2 w-full">
                   <input
                     type="checkbox"
                     name="filter-collage"
                     className="accent-palette-second cursor-pointer"
-                    key={key}
-                    id={"colegio" + colegio.id}
+                    id={"grado" + grado}
                     checked={
-                      searchParams.get("colegios") !== null &&
+                      searchParams.get("grados") !== null &&
                       searchParams
-                        .get("colegios")
+                        .get("grados")
                         .split("_")
-                        .includes(StringToUrl(colegio.nombre))
+                        .includes(StringToUrl(grado))
                     }
-                    onChange={() =>
-                      handleFilter("colegios", StringToUrl(colegio.nombre))
-                    }
+                    onChange={() => handleFilter("grados", StringToUrl(grado))}
                   />
-                  <span
-                    className="font-medium"
-                    htmlFor={"colegio" + colegio.id}
-                  >
-                    {colegio.nombre}
+                  <span className="font-medium" htmlFor={"grado" + grado}>
+                    {grado}
                   </span>
                 </div>
               );
             })}
-          </div>
-        </FilterDetail>
-        <FilterDetail
-          title="Grado/Año Academico"
-          childrenCN={
-            "inline-grid h-max grid-cols-[max-content_max-content] auto-rows-max"
-          }
-        >
-          {grades.map((grado, key) => {
-            return (
-              <div key={key} className="flex gap-1 py-1 px-2 w-full">
-                <input
-                  type="checkbox"
-                  name="filter-collage"
-                  className="accent-palette-second cursor-pointer"
-                  id={"grado" + grado}
-                  checked={
-                    searchParams.get("grados") !== null &&
-                    searchParams
-                      .get("grados")
-                      .split("_")
-                      .includes(StringToUrl(grado))
-                  }
-                  onChange={() => handleFilter("grados", StringToUrl(grado))}
-                />
-                <span className="font-medium" htmlFor={"grado" + grado}>
-                  {grado}
-                </span>
-              </div>
-            );
-          })}
-        </FilterDetail>
-        <FilterDetail title="Nivel Academico">
-          {level.map((lvl, key) => {
-            return (
-              <div
-                key={key}
-                className="flex gap-1 p-2 py-1 w-full items-center"
-              >
-                <input
-                  type="checkbox"
-                  name="filter-collage"
-                  className="accent-palette-second cursor-pointer"
-                  id={"nivel" + lvl}
-                  checked={
-                    searchParams.get("niveles") !== null &&
-                    searchParams
-                      .get("niveles")
-                      .split("_")
-                      .includes(StringToUrl(lvl))
-                  }
-                  onChange={() => handleFilter("niveles", StringToUrl(lvl))}
-                />
-                <span className="font-medium" htmlFor={"nivel" + lvl}>
-                  {lvl}
-                </span>
-              </div>
-            );
-          })}
-        </FilterDetail>
+          </FilterDetail>
+          <FilterDetail title="Nivel Academico">
+            {level.map((lvl, key) => {
+              return (
+                <div
+                  key={key}
+                  className="flex gap-1 p-2 py-1 w-full items-center"
+                >
+                  <input
+                    type="checkbox"
+                    name="filter-collage"
+                    className="accent-palette-second cursor-pointer"
+                    id={"nivel" + lvl}
+                    checked={
+                      searchParams.get("niveles") !== null &&
+                      searchParams
+                        .get("niveles")
+                        .split("_")
+                        .includes(StringToUrl(lvl))
+                    }
+                    onChange={() => handleFilter("niveles", StringToUrl(lvl))}
+                  />
+                  <span className="font-medium" htmlFor={"nivel" + lvl}>
+                    {lvl}
+                  </span>
+                </div>
+              );
+            })}
+          </FilterDetail>
 
-        <FilterDetail title="Otros Filtros"></FilterDetail>
+          <FilterDetail title="Enlaces"></FilterDetail>
+        </div>
+        <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 md:gap-4 lg:gap-8 text-center p-2 ">
+          {articulos.map((articulo) => (
+            <ShopArticle articulo={articulo} key={articulo.id} />
+          ))}
+        </div>
       </div>
-      <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 md:gap-4 lg:gap-8 text-center p-2 ">
-        {articulos.map((articulo) => (
-          <ShopArticle articulo={articulo} key={articulo.id} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 

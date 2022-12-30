@@ -6,6 +6,11 @@ import Counter from "../components/Counter";
 
 const CheckOut = () => {
   const [method, setMethod] = useState("standard");
+  const [viewBilling, setviewBilling] = useState(false);
+
+  function handleViewBilling() {
+    setviewBilling(!viewBilling);
+  }
   let total = 0;
   return (
     <div className="min-h-screen w-full flex flex-col antialiased overflow-hidden bg-white relative snap-y snap-proximity">
@@ -48,7 +53,7 @@ const CheckOut = () => {
               name="shipapt"
             />
             <Input
-              title="Telefono"
+              title="Teléfono:"
               placeholder="+57 512512512"
               name="shipphone"
               type="tel"
@@ -96,11 +101,135 @@ const CheckOut = () => {
               </p>
             </div>
           </div>
+
+          {/* Facturacion */}
+          <div className="p-2 pb-6 grid auto-rows-max gap-4">
+            <div className="flex items-center gap-1">
+              <h2 className="col-span-full text-palette-primary text-xl font-bold">
+                Facturación
+              </h2>
+              <input
+                type="checkbox"
+                value={viewBilling}
+                onChange={handleViewBilling}
+                className="accent-palette-ext cursor-pointer"
+              />
+            </div>
+            {viewBilling && (
+              <div className="grid grid-cols-2 gap-4 ">
+                <Input
+                  title="Nombre:"
+                  name="billingFullname"
+                  placeholder="Joe Doe"
+                  cnd="col-span-full"
+                />
+
+                <Input
+                  title="RFC:"
+                  name={"billingRFC"}
+                  placeholder=""
+                  cnd="col-span-full"
+                />
+
+                <Input
+                  title="Calle:"
+                  placeholder="calle alta"
+                  name="billingStreet"
+                  cnd="col-span-full"
+                />
+
+                <Input
+                  title={"Numero:"}
+                  placeholder="Apt 32"
+                  name="billingNumber"
+                />
+                <Input
+                  title="Colonia:"
+                  placeholder=""
+                  name="billingColony"
+                  type="tel"
+                />
+
+                <Input title="Ciudad:" placeholder="CDMx" name="billingCity" />
+                <Input
+                  title="País:"
+                  placeholder="Mexico"
+                  name="billingCountry"
+                />
+                <Input
+                  title="Estado/Provincia:"
+                  placeholder="Distrito Federal"
+                  name="billingState"
+                />
+
+                <Input title="Codigo Postal:" name="billingZIP" />
+                <div className={"flex flex-col w-full col-span-full"}>
+                  <span className={" w-max text-sm font-bold text-palette-ext"}>
+                    Uso de CFDI
+                  </span>
+
+                  <select
+                    name="billingCFDI"
+                    className="p-2 outline-none border-2 rounded-md bg-slate-50 text-gray-400 hover:text-gray-700 focus:text-gray-700 cursor-pointer active:border-palette-primary"
+                  >
+                    <option value="G01">Adquisición de mercancías.</option>
+                    <option value="G02">
+                      Devoluciones, descuentos o bonificaciones.
+                    </option>
+                    <option value="G03">Gastos en general.</option>
+                    <option value="I01">Construcciones.</option>
+                    <option value="I02">
+                      Mobiliario y equipo de oficina por inversiones.
+                    </option>
+                    <option value="I03">Equipo de transporte.</option>
+                    <option value="I04">Equipo de cómputo y accesorios.</option>
+                    <option value="I05">
+                      Dados, troqueles, moldes, matrices y herramental.
+                    </option>
+                    <option value="I06">Comunicaciones telefónicas.</option>
+                    <option value="I07">Comunicaciones satelitales.</option>
+                    <option value="I08">Otra maquinaria y equipo.</option>
+                    <option value="D01">
+                      Honorarios médicos, dentales y gastos hospitalarios.
+                    </option>
+                    <option value="D02">
+                      Gastos médicos por incapacidad o discapacidad.
+                    </option>
+                    <option value="D03">Gastos funerales.</option>
+                    <option value="D04">Donativos.</option>
+                    <option value="D05">
+                      Intereses reales efectivamente pagados por créditos
+                      hipotecarios (casa habitación).
+                    </option>
+                    <option value="D06">
+                      Aportaciones voluntarias al SAR.{" "}
+                    </option>
+                    <option value="D07">
+                      Primas por seguros de gastos médicos.
+                    </option>
+                    <option value="D08">
+                      Gastos de transportación escolar obligatoria.
+                    </option>
+                    <option value="D09">
+                      Depósitos en cuentas para el ahorro, primas que tengan
+                      como base planes de pensiones.
+                    </option>
+                    <option value="D10">
+                      Pagos por servicios educativos (colegiaturas).
+                    </option>
+                    <option value="P01">Por definir.</option>
+                  </select>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         <div className="bg-slate-50 p-2 lg:p-6 rounded-md h-max">
-          <h2 className="col-span-full text-palette-primary text-xl font-bold">
-            Resumen del pedido
-          </h2>
+          <div>
+            <h2 className="col-span-full text-palette-primary text-xl font-bold">
+              Resumen del pedido
+            </h2>
+          </div>
 
           <div className="flex flex-col gap-2 pb-4 border-b-2">
             {cartElement.map((element) => {

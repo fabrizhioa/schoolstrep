@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
 
 const FilterDetail = ({ title, children, childrenCN }) => {
-  const [viewFilter, setViewFilter] = useState(false);
+  const [viewFilter, setViewFilter] = useState(true);
   return (
     <div
       className={
