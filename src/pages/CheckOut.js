@@ -288,9 +288,14 @@ const CheckOut = () => {
             </div>
 
             <div className="border-t-2 py-2 text-palette-second ">
-              <button className="p-2 rounded-md bg-palette-second text-white w-full hover:bg-palette-primary font-medium">
-                Confirmar Orden
-              </button>
+              <a href="./orderdetail?orderId=123123123">
+                <button
+                  type="button"
+                  className="p-2 rounded-md bg-palette-second text-white w-full hover:bg-palette-primary font-medium"
+                >
+                  Confirmar Orden
+                </button>
+              </a>
             </div>
           </div>
         </div>
