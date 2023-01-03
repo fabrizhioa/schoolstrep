@@ -10,7 +10,7 @@ import FilterDetail from "../components/FilterDetail";
 import ShopArticle from "../components/ShopArticle";
 import ModalForm from "../components/ModalForm";
 
-const Shop = () => {
+const Shop = ({ openCartAction }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [articulos, setArticulos] = useState(Articulos);
   const [mobileFilterView, setMobileFilterView] = useState(false);
@@ -138,12 +138,12 @@ const Shop = () => {
   return (
     <>
       {verModal && <ModalForm setVerModal={setVerModal} />}
-      <div className="min-h-screen w-full h-full grid md:grid-rows-[max-content_auto] lg:grid-cols-[minmax(0,290px)_auto] pt-20 relative">
+      <div className="min-h-screen w-full h-full grid md:grid-rows-[max-content_auto] md:grid-cols-[minmax(0,290px)_auto] relative">
         <div className="bg-slate-50 w-full col-span-full h-max flex justify-end">
           <SelectOrder handleFilter={handleFilter} />
         </div>
         <div
-          className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed lg:static  transition-all  top-20 ${
+          className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed md:static  transition-all  top-20 ${
             mobileFilterView ? "left-0" : "right-full"
           }`}
         >
@@ -247,10 +247,21 @@ const Shop = () => {
           </FilterDetail>
 
           <FilterDetail title="Enlaces"></FilterDetail>
+          <button
+            className="bg-palette-ext text-palette-second font-semibold p-2 rounded-md w-full hover:bg-palette-primary hover:text-white shadow-md active:shadow-none"
+            type="button"
+            onClick={() => setVerModal(true)}
+          >
+            Configuración
+          </button>
         </div>
         <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 md:gap-4 lg:gap-8 text-center p-2 ">
           {articulos.map((articulo) => (
-            <ShopArticle articulo={articulo} key={articulo.id} />
+            <ShopArticle
+              articulo={articulo}
+              key={articulo.id}
+              openCartAction={openCartAction}
+            />
           ))}
         </div>
       </div>

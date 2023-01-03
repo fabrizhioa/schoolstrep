@@ -10,6 +10,7 @@ import ModalForm from "../components/ModalForm";
 const Home = () => {
   const [verModal, setVerModal] = useState(false);
   const [selectCollage, setSelectCollage] = useState("");
+  const [filterColegios, setFilterColegios] = useState("");
 
   return (
     <>
@@ -44,31 +45,48 @@ const Home = () => {
           id="colegios"
         >
           <div className="flex flex-col md:flex-row gap-4 p-4  max-w-screen-xl flex-wrap mx-auto w-full ">
-            <h3 className="text-center text-4xl font-bold w-full text-palette-ext mb-8 uppercase ">
-              Seleccione el Colegio que desea comprar
-            </h3>
-            <div className="grid grid-cols-2 gap-4 md:flex md:flex-row md:gap-8 items-center justify-between w-full">
-              {Colegios.map((colegio, key) => (
-                <button
-                  onClick={() => {
-                    setSelectCollage(StringToUrl(colegio.nombre));
-                    setVerModal(true);
-                  }}
-                  className="flex flex-col w-full md:w-2/6  shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] md:h-[50vh]  group items-center justify-center  hover:shadow-white/40"
-                  key={key}
-                >
-                  <div className="relative">
-                    <img
-                      src={colegio.img}
-                      alt={colegio.nombre}
-                      className=" rounded-t-xl aspect-square w-full p-4 grayscale group-hover:grayscale-0 group-hover:drop-shadow-md group-hover:scale-105"
-                    />
-                    <h3 className="group-hover:text-white text-gray-800 text-center font-bold uppercase text-xl">
-                      {colegio.nombre}
-                    </h3>
-                  </div>
-                </button>
-              ))}
+            <div className="flex flex-col items-center justify-center mx-auto">
+              <h3 className="text-center text-4xl font-bold w-full text-palette-ext mb-4 uppercase ">
+                Seleccione el Colegio que desea comprar
+              </h3>
+              <input
+                type="text"
+                onChange={(e) => setFilterColegios(e.target.value)}
+                value={filterColegios}
+                placeholder="busca el colegio que desees"
+                className="p-2 w-full rounded-md outline-none focus:border-palette-primary border-2 border-transparent"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:flex md:flex-row flex-wrap md:gap-8 items-center w-full">
+              {Colegios.map(
+                (colegio, key) =>
+                  (!filterColegios.length > 0 ||
+                    colegio.nombre
+                      .toLowerCase()
+                      .includes(filterColegios.toLowerCase())) && (
+                    <button
+                      onClick={() => {
+                        setSelectCollage(StringToUrl(colegio.nombre));
+                        setVerModal(true);
+                      }}
+                      // className="shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] md:h-[50vh]  group items-center justify-center  hover:shadow-white/40"
+                      className="max-w-[23%] w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] md:h-[50vh] group items-center justify-center hover:shadow-white/20 "
+                      key={key}
+                    >
+                      <div className="relative w-max">
+                        <img
+                          src={colegio.img}
+                          alt={colegio.nombre}
+                          className=" rounded-t-xl aspect-square p-4 grayscale group-hover:grayscale-0 group-hover:drop-shadow-md group-hover:scale-105"
+                        />
+                        <h3 className="group-hover:text-white text-gray-800 text-center font-bold uppercase text-xl">
+                          {colegio.nombre}
+                        </h3>
+                      </div>
+                    </button>
+                  )
+              )}
             </div>
           </div>
         </section>

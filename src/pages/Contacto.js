@@ -6,8 +6,8 @@ import Input from "../components/Forms/Input";
 
 export const Contacto = () => {
   return (
-    <div className="min-h-[calc(100vh-80px)] w-full flex gap-2 bg-gradient-to-t items-center from-slate-50 to-blue-50">
-      <div className="grid md:grid-cols-2 w-full gap-4 p-2 max-w-screen-xl mx-auto items-center h-max ">
+    <div className="min-h-[calc(100vh-80px)] w-full flex gap-2 bg-gradient-to-t from-slate-50 to-blue-50">
+      <div className="grid w-full gap-4 p-2 max-w-screen-xl mx-auto h-max ">
         <div className="col-span-full text-center p-2">
           <p className="text-lg font-bold text-palette-ext">
             Tus problemas son nuestros
@@ -16,9 +16,34 @@ export const Contacto = () => {
             Contacta con nosotros
           </h2>
         </div>
-
+        <div className="grid grid-cols-3 gap-3 p-2 w-max mx-auto">
+          <a
+            href="tel:+584121075052"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-primary hover:border-transparent  hover:text-palette-white"
+          >
+            <MdPhone />
+          </a>
+          <a
+            href="mailto:correo@correo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-ext hover:border-transparent  hover:text-palette-white"
+          >
+            <MdMail />
+          </a>
+          <a
+            href="http://whatsapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-primary hover:border-transparent  hover:text-palette-white"
+          >
+            <FaWhatsapp />
+          </a>
+        </div>
         <div>
-          <form className="flex gap-2 flex-col">
+          <form className="flex gap-2 flex-col w-3/5 mx-auto">
             <Input
               name="contactName"
               title="Nombre completo:"
@@ -66,35 +91,6 @@ export const Contacto = () => {
               Enviar mensaje
             </button>
           </form>
-        </div>
-        <div className="flex flex-col gap-3">
-          <img src={Image} alt="Imagen de contacto" className="w-5/6 mx-auto" />
-          <div className="grid grid-cols-3 gap-3 p-2 w-max mx-auto">
-            <a
-              href="tel:+584121075052"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-primary hover:border-transparent  hover:text-palette-white"
-            >
-              <MdPhone />
-            </a>
-            <a
-              href="mailto:correo@correo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-ext hover:border-transparent  hover:text-palette-white"
-            >
-              <MdMail />
-            </a>
-            <a
-              href="http://whatsapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 px-5 border-2 rounded-md flex items-center justify-center bg-slate-50 text-gray-500 text-2xl hover:bg-palette-primary hover:border-transparent  hover:text-palette-white"
-            >
-              <FaWhatsapp />
-            </a>
-          </div>
         </div>
       </div>
     </div>

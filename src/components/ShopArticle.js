@@ -2,7 +2,7 @@ import React from "react";
 import { MdOutlineStar, MdShoppingCart } from "react-icons/md";
 import Counter from "./Counter";
 
-const ShopArticle = ({ articulo }) => {
+const ShopArticle = ({ articulo, openCartAction }) => {
   return (
     <div className="bg-white p-2 shadow-lg shadow-black/20 rounded-md w-full md:w-72 h-max">
       <a
@@ -34,7 +34,10 @@ const ShopArticle = ({ articulo }) => {
           ${articulo.precio}
         </p>
       </div>
-      <button className="w-full bg-palette-ext/90 hover:bg-palette-ext flex items-center justify-center gap-2 rounded-md mt-2 p-2 hover:text-white text-medium">
+      <button
+        className="w-full bg-palette-ext/90 hover:bg-palette-ext flex items-center justify-center gap-2 rounded-md mt-2 p-2 hover:text-white text-medium"
+        onClick={openCartAction}
+      >
         <MdShoppingCart /> add to cart
       </button>
     </div>

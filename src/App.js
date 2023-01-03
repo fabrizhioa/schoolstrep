@@ -43,7 +43,7 @@ function App() {
           path="/shop"
           element={
             <Suspense fallback={<Splash />}>
-              <Shop />
+              <Shop openCartAction={() => setViewModalCart(true)} />
             </Suspense>
           }
         />

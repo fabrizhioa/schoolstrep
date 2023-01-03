@@ -3,7 +3,7 @@ import Image from "../../assets/about.svg";
 const Mision = () => {
   return (
     <div className="flex flex-col items-center justify-center md:min-h-[60vh] bg-gradient-to-b from-slate-50 to-blue-50">
-      <div className="grid md:grid-cols-2 items-center justify-center text-center md:text-left  py-8 px-4 max-w-screen-xl mx-auto gap-4">
+      <div className="grid md:grid-cols-2 items-center justify-center text-center md:text-left  py-8 px-4 max-w-screen-xl mx-auto gap-4 overflow-hidden">
         <div className="order-2 md:order-1">
           <span className="uppercase font-bold text-lg text-palette-ext">
             MISIÓN Y FILOSOFÍA
