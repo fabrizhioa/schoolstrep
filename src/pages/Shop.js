@@ -143,14 +143,14 @@ const Shop = ({ openCartAction }) => {
           <SelectOrder handleFilter={handleFilter} />
         </div>
         <div
-          className={`min-h-full bg-slate-50 p-2 min-w-[290px] fixed md:static  transition-all  top-20 ${
+          className={`min-h-full bg-slate-50 p-2 fixed md:static  transition-all duration-300 top-20 ${
             mobileFilterView ? "left-0" : "right-full"
           }`}
         >
           <h2 className="text-xl text-palette-second font-bold flex justify-between items-center relative">
             Filtros{" "}
             <button
-              className="fixed bg-palette-second text-white rounded-full bottom-4 lg:mt-0  ml-4 lg:ml-0 p-4 lg:p-0 w-max text-2xl right-2 lg:static shadow-sm lg:shadow-none lg:bg-transparent lg:text-palette-second   "
+              className="fixed bg-palette-second text-white rounded-full bottom-4 md:mt-0  ml-4 md:ml-0 p-4 md:p-0 w-max text-2xl right-2 md:static shadow-sm md:shadow-none md:bg-transparent md:text-palette-second"
               type="button"
               onClick={() => setMobileFilterView(!mobileFilterView)}
             >
@@ -255,7 +255,7 @@ const Shop = ({ openCartAction }) => {
             Configuración
           </button>
         </div>
-        <div className="min-h-full bg-slate-100 flex flex-wrap  w-full gap-2 md:gap-4 lg:gap-8 text-center p-2 ">
+        <div className="min-h-full bg-slate-100 grid grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] auto-rows-max  w-full gap-2 md:p-4 lg:p-4 md:gap-4 lg:gap-8 text-center p-2 ">
           {articulos.map((articulo) => (
             <ShopArticle
               articulo={articulo}

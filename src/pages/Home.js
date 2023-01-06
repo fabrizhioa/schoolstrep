@@ -6,12 +6,12 @@ import StringToUrl from "../adapters/StringToUrl";
 //Componentes
 import Splash from "../components/splashScreen";
 import ModalForm from "../components/ModalForm";
+import ComboBox from "../components/CollagesComboBox";
 
 const Home = () => {
   const [verModal, setVerModal] = useState(false);
   const [selectCollage, setSelectCollage] = useState("");
   const [filterColegios, setFilterColegios] = useState("");
-
   return (
     <>
       {verModal && (
@@ -49,16 +49,15 @@ const Home = () => {
               <h3 className="text-center text-4xl font-bold w-full text-palette-ext mb-4 uppercase ">
                 Seleccione el Colegio que desea comprar
               </h3>
-              <input
-                type="text"
-                onChange={(e) => setFilterColegios(e.target.value)}
-                value={filterColegios}
-                placeholder="busca el colegio que desees"
-                className="p-2 w-full rounded-md outline-none focus:border-palette-primary border-2 border-transparent"
+              <ComboBox
+                data={Colegios}
+                setFilterColegios={setFilterColegios}
+                setSelectColegio={setSelectCollage}
+                setVerModal={setVerModal}
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:flex md:flex-row flex-wrap md:gap-8 items-center w-full">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-4  md:gap-8 items-center w-full">
               {Colegios.map(
                 (colegio, key) =>
                   (!filterColegios.length > 0 ||
@@ -71,7 +70,7 @@ const Home = () => {
                         setVerModal(true);
                       }}
                       // className="shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] md:h-[50vh]  group items-center justify-center  hover:shadow-white/40"
-                      className="max-w-[23%] w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] md:h-[50vh] group items-center justify-center hover:shadow-white/20 "
+                      className="w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] md:h-[50vh] group items-center justify-center hover:shadow-white/20 "
                       key={key}
                     >
                       <div className="relative w-max">

@@ -1,7 +1,6 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { MdFacebook, MdMail, MdPhone } from "react-icons/md";
-import Image from "../assets/contact.svg";
+import { MdMail, MdPhone } from "react-icons/md";
 import Input from "../components/Forms/Input";
 
 export const Contacto = () => {

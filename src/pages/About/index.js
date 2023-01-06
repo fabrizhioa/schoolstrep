@@ -7,7 +7,7 @@ import Services from "./Services";
 
 const About = () => {
   return (
-    <div className=" min-h-[100vh-80px] w-full  bg-white">
+    <div className=" min-h-[100vh-80px] w-full  bg-white overflow-hidden">
       <Mision />
       <Services />
       <QA />

@@ -19,7 +19,7 @@ const Header = ({ openCartAction }) => {
         </Link>
 
         <nav
-          className={`fixed md:static md:flex-row md:justify-center md:gap-2 w-full h-max transition-all duration-200 bg-slate-200 md:bg-transparent ${
+          className={`fixed md:static md:flex-row md:justify-center md:gap-2 w-full h-max transition-all duration-200 bg-slate-50 shadow-sm md:shadow-none md:px-0 px-2 md:bg-transparent ${
             mobileMenuView ? "top-[calc(5rem-1px)]" : "-top-full"
           } left-0 flex items-center justify flex-col`}
         >
@@ -29,13 +29,13 @@ const Header = ({ openCartAction }) => {
               `p-2 border-b-2 flex w-full md:w-max justify-between items-center font-semibold ${
                 isActive
                   ? "text-palette-primary border-palette-primary"
-                  : "text-palette-second border-palette-second md:border-transparent"
+                  : "text-palette-second md:border-transparent"
               } hover:border-palette-ext`
             }
             onClick={() => setMobileMenuView(false)}
           >
             <span>Home</span>
-            <MdHome className="md:hidden" />
+            <MdHome className="md:hidden text-palette-primary" />
           </NavLink>
           <NavLink
             to="/nosotros"
@@ -43,27 +43,27 @@ const Header = ({ openCartAction }) => {
               `p-2 border-b-2 flex w-full md:w-max justify-between items-center font-semibold ${
                 isActive
                   ? "text-palette-primary border-palette-primary"
-                  : "text-palette-second border-palette-second md:border-transparent"
+                  : "text-palette-second md:border-transparent"
               } hover:border-palette-ext`
             }
             onClick={() => setMobileMenuView(false)}
           >
             <span>Nosotros</span>
-            <MdHelp className="md:hidden" />
+            <MdHelp className="md:hidden text-palette-primary" />
           </NavLink>
           <NavLink
             to="/contacto"
             className={({ isActive }) =>
-              `p-2 border-b-2 flex w-full md:w-max justify-between items-center font-semibold ${
+              `p-2 border-b-2 flex w-full md:w-max justify-between items-center font-semibold border-transparent ${
                 isActive
-                  ? "text-palette-primary border-palette-primary"
-                  : "md:border-transparent"
+                  ? "text-palette-primary md:border-palette-primary"
+                  : "text-palette-second"
               } hover:border-palette-ext`
             }
             onClick={() => setMobileMenuView(false)}
           >
             <span>Contacto</span>
-            <MdEmail className="md:hidden" />
+            <MdEmail className="md:hidden text-palette-primary" />
           </NavLink>
         </nav>
         <div className="flex gap-2 text-2xl">

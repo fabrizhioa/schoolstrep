@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../components/Forms/Input";
 import { cartElement, Articulos } from "../fakedata";
 import { IoMdTrash } from "react-icons/io";
@@ -8,6 +8,8 @@ const CheckOut = () => {
   const [method, setMethod] = useState("standard");
   const [direction, setDirection] = useState("school");
   const [viewBilling, setviewBilling] = useState(false);
+  const [validDiscount, setValidDiscount] = useState(undefined);
+  const [discountCode, setDiscountCode] = useState("");
   const [useShippingData, setUseShippingData] = useState(false);
 
   function handleViewBilling() {
@@ -154,24 +156,8 @@ const CheckOut = () => {
                 <div className="w-3 h-3 bg-white rounded-full"></div>
               </div>
             </div>
-            {direction === "home" && viewBilling && (
-              <div className="flex items-center gap-1">
-                <h2 className="col-span-full text-palette-second text-lg font-bold">
-                  Usar información de envio:
-                </h2>
-                <div
-                  className={`w-10 h-5  cursor-pointer flex items-center p-1 rounded-full transition-all duration-300 ${
-                    useShippingData
-                      ? "justify-end bg-palette-primary "
-                      : "justify-start bg-gray-400"
-                  }`}
-                  onClick={handleUseShippingData}
-                >
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-              </div>
-            )}
-            {viewBilling && !useShippingData && (
+
+            {viewBilling && (
               <div className="grid grid-cols-2 gap-4 ">
                 <Input
                   title="Nombre:"
@@ -253,38 +239,64 @@ const CheckOut = () => {
                   </select>
                 </div>
 
-                <Input
-                  title="Calle:"
-                  placeholder="calle alta"
-                  name="billingStreet"
-                  cnd="col-span-full"
-                />
+                {direction === "home" && (
+                  <div className="flex items-center gap-1">
+                    <h2 className="col-span-full text-palette-second text-lg font-bold">
+                      Usar información de envio:
+                    </h2>
+                    <div
+                      className={`w-10 h-5  cursor-pointer flex items-center p-1 rounded-full transition-all duration-300 ${
+                        useShippingData
+                          ? "justify-end bg-palette-primary "
+                          : "justify-start bg-gray-400"
+                      }`}
+                      onClick={handleUseShippingData}
+                    >
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                )}
 
-                <Input
-                  title={"Numero:"}
-                  placeholder="Apt 32"
-                  name="billingNumber"
-                />
-                <Input
-                  title="Colonia:"
-                  placeholder=""
-                  name="billingColony"
-                  type="tel"
-                />
+                {viewBilling && !useShippingData && (
+                  <>
+                    <Input
+                      title="Calle:"
+                      placeholder="calle alta"
+                      name="billingStreet"
+                      cnd="col-span-full"
+                    />
 
-                <Input title="Ciudad:" placeholder="CDMx" name="billingCity" />
-                <Input
-                  title="País:"
-                  placeholder="Mexico"
-                  name="billingCountry"
-                />
-                <Input
-                  title="Estado/Provincia:"
-                  placeholder="Distrito Federal"
-                  name="billingState"
-                />
+                    <Input
+                      title={"Numero:"}
+                      placeholder="Apt 32"
+                      name="billingNumber"
+                    />
+                    <Input
+                      title="Colonia:"
+                      placeholder=""
+                      name="billingColony"
+                      type="tel"
+                    />
 
-                <Input title="Codigo Postal:" name="billingZIP" />
+                    <Input
+                      title="Ciudad:"
+                      placeholder="CDMx"
+                      name="billingCity"
+                    />
+                    <Input
+                      title="País:"
+                      placeholder="Mexico"
+                      name="billingCountry"
+                    />
+                    <Input
+                      title="Estado/Provincia:"
+                      placeholder="Distrito Federal"
+                      name="billingState"
+                    />
+
+                    <Input title="Codigo Postal:" name="billingZIP" />
+                  </>
+                )}
               </div>
             )}
           </div>
@@ -334,10 +346,47 @@ const CheckOut = () => {
           </div>
 
           <div className="flex flex-col gap-2 py-2 px-1">
-            <div className="text-lg font-medium text-palette-second flex justify-between py-1">
+            <div className="text-lg font-semibold text-palette-second flex justify-between py-1">
               <p>Subtotal</p>
               <p>${total * 0.84}</p>
             </div>
+            <div className="grid grid-cols-[auto,max-content] gap-2">
+              <input
+                type="text"
+                placeholder="Codigo de descuento"
+                className="w-full p-2 px-2 rounded-md shadow-sm text-sm outline-none"
+                onChange={(e) => {
+                  setDiscountCode(e.target.value.toUpperCase());
+                  if (e.target.value === "" && !validDiscount) {
+                    setValidDiscount(undefined);
+                  }
+                }}
+              />
+              <button
+                type="button"
+                className="w-full  p-2 px-2 bg-palette-ext font-semibold text-sm rounded-md shadow-sm"
+                onClick={(e) =>
+                  setValidDiscount(discountCode === "SCHOOLTREP23")
+                }
+              >
+                Agregar
+              </button>
+              <span
+                className={
+                  validDiscount || validDiscount === undefined
+                    ? "hidden"
+                    : "w-full col-span-full text-red-500 transition-all duration-300 text-sm font-medium"
+                }
+              >
+                Codigo invalido
+              </span>
+            </div>
+            {validDiscount && (
+              <div className="text-lg font-medium text-palette-second flex justify-between py-1">
+                <p>Discount</p>
+                <p>- ${total * 0.15}</p>
+              </div>
+            )}
             <div className="text-lg font-medium text-palette-second flex justify-between py-1">
               <p>Shipping</p>
               <p>{method === "standard" ? "$5" : "$16"}</p>
@@ -349,7 +398,12 @@ const CheckOut = () => {
 
             <div className="border-t-2 py-2 text-xl font-bold text-palette-second flex justify-between">
               <p>Total</p>
-              <p>${total + (method === "standard" ? 5 : 16)} </p>
+              <p>
+                $
+                {total +
+                  (method === "standard" ? 5 : 16) *
+                    (validDiscount ? 0.85 : 1)}{" "}
+              </p>
             </div>
 
             <div className="border-t-2 py-2 text-palette-second ">

@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { Orders, Articulos } from "../fakedata";
 
 const Details = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const ElementId = searchParams.get("orderId");
   const Element = Orders.find((order) => order.id.toString() === ElementId);
   let total = 0;
