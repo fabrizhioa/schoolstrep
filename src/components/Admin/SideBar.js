@@ -64,6 +64,17 @@ const SideBar = () => {
           Tokens
           <MdArrowRight className="hidden text-xl group-hover:inline-block" />
         </NavLink>
+        <NavLink
+          to="descuentos"
+          className={({ isActive }) =>
+            `p-2 rounded-md flex justify-between items-center group ${
+              isActive ? "bg-palette-ext" : "bg-palette-second"
+            }`
+          }
+        >
+          Descuentos
+          <MdArrowRight className="hidden text-xl group-hover:inline-block" />
+        </NavLink>
       </nav>
       <div className="bg-palette-second/40 px-2 py-1 rounded-md  grid grid-cols-[max-content_auto] gap-2 items-center">
         <img

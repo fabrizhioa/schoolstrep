@@ -1,10 +1,8 @@
 import React from "react";
 import Empty from "../../../components/Admin/Empty";
-import { Colegios } from "../../../fakedata";
 
 const List = () => {
   const empty = true;
-  console.log(Colegios);
   return empty ? (
     <Empty
       text="No hay paquetes"

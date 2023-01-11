@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SideBar from "./components/Admin/SideBar";
 import Dashboard from "./pages/Admin/Dashboard";
+import Descuentos from "./pages/Admin/Descuentos";
 import Escuelas from "./pages/Admin/Escuelas";
 import Ordenes from "./pages/Admin/Ordenes";
 import Paquetes from "./pages/Admin/Paquetes";
@@ -20,6 +21,7 @@ const Admin = () => {
           <Route path="/tokens/*" element={<Tokens />} />
           <Route path="/productos/*" element={<Productos />} />
           <Route path="/ordenes" element={<Ordenes />} />
+          <Route path="/descuentos" element={<Descuentos />} />
         </Routes>
       </div>
     </div>

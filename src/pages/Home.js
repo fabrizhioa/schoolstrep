@@ -57,7 +57,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-4  md:gap-8 items-center w-full">
+            <div className="grid grid-cols-[repeat(auto-fit,14rem)] gap-4  md:gap-8 items-center justify-center  w-full">
               {Colegios.map(
                 (colegio, key) =>
                   (!filterColegios.length > 0 ||
@@ -70,7 +70,7 @@ const Home = () => {
                         setVerModal(true);
                       }}
                       // className="shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] md:h-[50vh]  group items-center justify-center  hover:shadow-white/40"
-                      className="w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] md:h-[50vh] group items-center justify-center hover:shadow-white/20 "
+                      className="w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] group items-center justify-center hover:shadow-white/20 "
                       key={key}
                     >
                       <div className="relative w-max">

@@ -7,7 +7,9 @@ const List = ({ actionOpenCreateModal }) => {
   return (
     <div className="flex flex-col gap-3 p-4 w-full h-full bg-slate-100">
       <div className="flex items-center justify-between">
-        <h3 className="text-palette-primary font-bold text-xl p-2">Tokens</h3>
+        <h3 className="text-palette-primary font-bold text-xl p-2">
+          Codigo de Descuento
+        </h3>
         <div>
           <button
             className="p-2 px-4 rounded-md bg-palette-primary hover:bg-palette-ext drop-shadow-md text-white font-bold active:drop-shadow-none"
@@ -22,7 +24,8 @@ const List = ({ actionOpenCreateModal }) => {
         <thead>
           <tr className="border-b-2 bg-slate-200 p-1 rounded-md">
             <th className="p-1">ID</th>
-            <th className="p-1">Token</th>
+            <th className="p-1">Codigo</th>
+            <th className="p-1">Porcentaje</th>
             <th className="p-1">Fecha Inicio</th>
             <th className="p-1">Fecha Fin</th>
             <th className="p-1">Estado</th>
@@ -38,6 +41,7 @@ const List = ({ actionOpenCreateModal }) => {
             >
               <td className="p-1">{key}</td>
               <td className="p-1">SCHOOLTREP{key}</td>
+              <td className="p-1">30</td>
               <td className="p-1">22/01/2022</td>
               <td className="p-1">23/01/2022</td>
               <td className="p-1">

@@ -3,7 +3,7 @@ import Empty from "../../../components/Admin/Empty";
 import Create from "./Create";
 import List from "./List";
 
-const Tokens = () => {
+const Descuentos = () => {
   const empty = false;
   const [viewModal, setViewModal] = useState(false);
 
@@ -17,7 +17,7 @@ const Tokens = () => {
       {empty ? (
         <Empty
           text="No hay tokens"
-          image="/assets/token_empty.svg"
+          image="/assets/discount_empty.svg"
           action={{
             text: "Agregar nuevo token",
             func: () => {
@@ -36,4 +36,4 @@ const Tokens = () => {
   );
 };
 
-export default Tokens;
+export default Descuentos;

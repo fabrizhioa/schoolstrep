@@ -1,15 +1,13 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-import StringToUrl from "../../../adapters/StringToUrl";
-import { CheckBox, Input, InputSelect } from "../../../components/Admin/Inputs";
-import { Colegios } from "../../../fakedata";
+import { CheckBox, Input } from "../../../components/Admin/Inputs";
 
 const Create = ({ closeAction }) => {
   return (
     <div className="bg-slate-50 p-4 min-w-[50%] rounded-md">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-palette-primary">
-          Agregar Token
+          Agregar Descuento
         </h2>
         <button
           type="button"
@@ -27,16 +25,15 @@ const Create = ({ closeAction }) => {
         }}
       >
         <div className="flex flex-col gap-3">
-          <InputSelect title="Escuela">
-            {Colegios.map((colegio) => (
-              <option value={StringToUrl(colegio.nombre)} key={colegio.id}>
-                {colegio.nombre}
-              </option>
-            ))}
-          </InputSelect>
           <Input
-            title="Token"
-            name="product_model"
+            title="Codigo"
+            name="discount_code"
+            type="text"
+            required={true}
+          />
+          <Input
+            title="Descuento (Porcentaje)"
+            name="discount_value"
             type="text"
             required={true}
           />
@@ -53,7 +50,7 @@ const Create = ({ closeAction }) => {
             type="date"
             required={true}
           />
-          <CheckBox title="Activar" name="activar" />
+          <CheckBox title="Activar" name="discount_status" />
           <div className="text-center">
             <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
               Crear

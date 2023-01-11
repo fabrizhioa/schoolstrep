@@ -41,11 +41,12 @@ const ComboBox = ({
       />
       {search.length > 0 && (
         <div className="absolute z-20 w-full bg-white mt-1 p-2 rounded-md">
-          {viewData.map((element) => (
+          {viewData.map((element, key) => (
             <button
               className="flex items-center gap-2 p-1 hover:bg-palette-ext w-full rounded-md"
               type="button"
               onClick={() => selectHandleCollages(element.nombre)}
+              key={key}
             >
               <img
                 src={element.img}
