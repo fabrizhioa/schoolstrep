@@ -21,8 +21,6 @@ const Details = () => {
 
             total += Number(el.precio);
 
-            console.log(element);
-
             return (
               <div
                 key={el.id}
