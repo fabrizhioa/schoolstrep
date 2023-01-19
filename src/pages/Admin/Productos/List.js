@@ -17,7 +17,7 @@ const List = () => {
     }
     setListArticle(newArray);
   }, [countView, search]);
-  const empty = true;
+
   return listArticle.length === 0 ? (
     <Empty
       text="No hay productos"
@@ -84,8 +84,11 @@ const List = () => {
                 <div className="flex items-center gap-2">
                   <img src={e.img} alt={e.nombre} className="w-12 h-12" />
                   <div className="text-left">
-                    <p className="text-sm font-bold">{e.nombre}</p>
-                    <span className="text-xs">{e.desc}</span>
+                    <p className={`text-sm font-bold h-5 `}>
+                      {e.nombre.length > 60
+                        ? e.nombre.substring(0, 59) + "..."
+                        : e.nombre}
+                    </p>
                   </div>
                 </div>
               </td>
@@ -94,9 +97,11 @@ const List = () => {
               <td className="p-1">{e.filtros.subcategorias}</td>
               <td className="p-1">
                 {e.existencia ? (
-                  <span className="font-bold text-lg">{e.existencia}</span>
+                  <span className="font-bold mx-auto  p-1 px-2 text-xs text-center">
+                    {e.existencia}
+                  </span>
                 ) : (
-                  <span className="font-bold p-1 px-2 text-xs text-center w-max block text-red-900 bg-red-400 rounded-full">
+                  <span className="font-bold mx-auto p-1 px-2 text-xs text-center w-max block text-red-900 bg-red-400 rounded-full">
                     Sin Existencias
                   </span>
                 )}

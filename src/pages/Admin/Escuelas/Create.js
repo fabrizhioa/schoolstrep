@@ -42,12 +42,45 @@ const Create = () => {
             type="tel"
             required={true}
           />
-          <Input
-            title="Domicilio"
-            name="school_address"
-            type="text"
-            required={true}
-          />
+          <div className="grid grid-cols-2 gap-3">
+            <Input
+              title="Calle"
+              name="school_address_street"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Colonia"
+              name="school_address_colony"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Numero"
+              name="school_address_number"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Ciudad"
+              name="school_address_city"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Estado"
+              name="school_address_state"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Codigo"
+              name="school_address_code"
+              type="text"
+              required={true}
+            />
+          </div>
+
           <Input title="RFC" name="school_rfc" type="text" required={true} />
           <HiddenBox title="Entrega en escuela" name="school_delivery">
             <div className="grid grid-cols-[repeat(auto-fit,minmax(max-content,1fr))] gap-2">

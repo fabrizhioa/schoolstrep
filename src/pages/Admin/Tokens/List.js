@@ -46,13 +46,15 @@ const List = ({ actionOpenCreateModal }) => {
                 </span>
               </td>
               <td className="p-1">{23 * key}</td>
-              <td className="p-1 flex flex-col ">
-                <button className="text-sm font-semibold text-palette-ext">
-                  Modificar
-                </button>
-                <button className="text-sm font-semibold text-red-500">
-                  Eliminar
-                </button>
+              <td className="p-1 ">
+                <div className="flex flex-col ">
+                  <button className="text-sm font-semibold text-palette-ext">
+                    Modificar
+                  </button>
+                  <button className="text-sm font-semibold text-red-500">
+                    Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

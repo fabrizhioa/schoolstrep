@@ -4,7 +4,7 @@ import { InputImage, Input } from "../../../components/Admin/Inputs";
 const Create = () => {
   return (
     <div className="bg-slate-50 p-4">
-      <h2 className="text-2xl font-bold text-palette-primary">
+      <h2 className="text-xl font-bold text-palette-primary">
         Agregar Producto
       </h2>
       <form

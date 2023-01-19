@@ -6,7 +6,7 @@ import StringToUrl from "../adapters/StringToUrl";
 //Componentes
 import Splash from "../components/splashScreen";
 import ModalForm from "../components/ModalForm";
-import ComboBox from "../components/CollagesComboBox";
+import ComboBox from "../components/ComboBox";
 
 const Home = () => {
   const [verModal, setVerModal] = useState(false);
@@ -51,9 +51,9 @@ const Home = () => {
               </h3>
               <ComboBox
                 data={Colegios}
-                setFilterColegios={setFilterColegios}
-                setSelectColegio={setSelectCollage}
-                setVerModal={setVerModal}
+                setFilter={setFilterColegios}
+                setSelect={setSelectCollage}
+                setAction={() => setVerModal(true)}
               />
             </div>
 

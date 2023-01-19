@@ -3,17 +3,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import StringToUrl from "../adapters/StringToUrl";
 
-const ComboBox = ({
-  data,
-  setFilterColegios,
-  setSelectColegio,
-  setVerModal,
-}) => {
+const ComboBox = ({ data, setFilter, setSelect, setAction }) => {
   const [viewData, setViewData] = useState(data);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setFilterColegios(search);
+    setFilter !== undefined && setFilter(search);
     let newData = data;
 
     if (search.length > 0) {
@@ -23,12 +18,12 @@ const ComboBox = ({
 
       setViewData(newData);
     }
-  }, [search, data, setFilterColegios]);
+  }, [search, data, setFilter]);
 
-  function selectHandleCollages(collage) {
-    setSelectColegio(StringToUrl(collage));
+  function selectHandle(element) {
+    setSelect !== undefined && setSelect(StringToUrl(element.nombre));
     setSearch("");
-    setVerModal(true);
+    setAction(element);
   }
 
   return [
@@ -37,15 +32,15 @@ const ComboBox = ({
         type="text"
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        className="w-full outline-none rounded-md p-2"
+        className="w-full outline-none rounded-md p-2 border-2"
       />
       {search.length > 0 && (
-        <div className="absolute z-20 w-full bg-white mt-1 p-2 rounded-md">
+        <div className="absolute z-20 w-full bg-white mt-1 p-2 rounded-md shadow">
           {viewData.map((element, key) => (
             <button
               className="flex items-center gap-2 p-1 hover:bg-palette-ext w-full rounded-md"
               type="button"
-              onClick={() => selectHandleCollages(element.nombre)}
+              onClick={() => selectHandle(element)}
               key={key}
             >
               <img

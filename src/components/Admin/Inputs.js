@@ -2,7 +2,9 @@ import { useRef, useState } from "react";
 import UploadImage from "../../assets/admin/upload.svg";
 
 export const CheckBox = (props) => {
-  const [value, setValue] = useState(false);
+  const [value, setValue] = useState(
+    props.checked === undefined ? false : props.checked
+  );
   return (
     <div className="flex items-center gap-2">
       <span className="font-medium">{props.title}:</span>
@@ -56,39 +58,58 @@ export const HiddenBox = (props) => {
   );
 };
 
-export const Input = (props) => {
+export const Input = ({
+  title,
+  type,
+  name,
+  required,
+  placeholder,
+  classInput,
+  classDiv,
+  classSpan,
+}) => {
   return (
-    <div className={"flex flex-col gap-2 " + props.classDiv}>
-      <span className={"font-medium " + props.classSpan}>{props.title}:</span>
+    <div className={"flex flex-col gap-2 " + classDiv}>
+      <span className={"font-medium " + classSpan}>{title}:</span>
       <input
-        type={props.type}
-        name={props.name}
-        required={props.required}
-        placeholder={props.placeholder}
+        type={type}
+        name={name}
+        required={required}
+        placeholder={placeholder}
         className={
           "p-2 rounded-md border-2 outline-none focus:border-palette-primary" +
-          props.classInput
+          classInput
         }
       />
     </div>
   );
 };
 
-export const InputSelect = (props) => {
+export const InputSelect = ({
+  children,
+  title,
+  type,
+  name,
+  required,
+  placeholder,
+  classInput,
+  classDiv,
+  classSpan,
+}) => {
   return (
-    <div className={"flex flex-col gap-2 " + props.classDiv}>
-      <span className={"font-medium " + props.classSpan}>{props.title}:</span>
+    <div className={"flex flex-col gap-2 " + classDiv}>
+      <span className={"font-medium " + classSpan}>{title}:</span>
       <select
-        type={props.type}
-        name={props.name}
-        required={props.required}
-        placeholder={props.placeholder}
+        type={type}
+        name={name}
+        required={required}
+        placeholder={placeholder}
         className={
           "p-2 rounded-md border-2 outline-none focus:border-palette-primary" +
-          props.classInput
+          classInput
         }
       >
-        {props.children}
+        {children}
       </select>
     </div>
   );
@@ -106,12 +127,12 @@ export const InputImage = (props) => {
 
   return (
     <div className="w-full flex flex-col gap-2  group">
-      <span className="block font-medium">Imagen:</span>
+      <span className="block font-medium">{props.title}:</span>
       <div className="relative aspect-square">
         <input
           type="file"
           hidden={imageValue !== null}
-          className="w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer"
+          className="w-4/5 aspect-square absolute top-0 left-0 opacity-0 cursor-pointer"
           id="imageSubmit"
           name={props.name}
           ref={inputReference}
@@ -153,7 +174,7 @@ export const InputImage = (props) => {
                 inputReference.current.click();
               }}
             >
-              Clickea o Arrasta una imagen
+              Clickea o Arrasta
             </p>
           </div>
         )}
