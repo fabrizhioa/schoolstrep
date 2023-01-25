@@ -27,6 +27,7 @@ const List = () => {
   ) : (
     <div className="flex flex-col gap-3 p-4 w-full h-full bg-slate-100">
       <h3 className="text-palette-primary font-bold text-xl p-2">Productos</h3>
+
       <div className="flex gap-3 justify-end flex-wrap items-center">
         <div className="flex flex-wrap gap-3 items-center">
           <span>Buscar:</span>
@@ -61,6 +62,12 @@ const List = () => {
         >
           Agregar nuevo
         </Link>
+        <button
+          to={"crear"}
+          className="bg-palette-primary hover:bg-palette-ext font-bold text-white drop-shadow-md active:drop-shadow-none p-2 px-4 rounded-md"
+        >
+          Cargar Archivo
+        </button>
       </div>
       <table className="rounded-md overflow-hidden shadow-sm">
         <thead>

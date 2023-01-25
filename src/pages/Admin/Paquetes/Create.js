@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  InputImage,
+  InputFile,
   Input,
   InputSelect,
   CheckBox,
@@ -108,7 +108,7 @@ const Create = () => {
             </div>
           </div>
         </div>
-        <InputImage />
+        <InputFile />
         <div className="text-center col-span-full p-2">
           <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
             Crear

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StringToUrl from "../../../adapters/StringToUrl";
 import {
   Input,
-  InputImage,
+  InputFile,
   InputSelect,
 } from "../../../components/Admin/Inputs";
 import Modal from "../../../components/Modal";
@@ -32,7 +32,7 @@ const Enlaces = () => {
               </InputSelect>
             </div>
 
-            <InputImage title="PDF" />
+            <InputFile title="PDF" />
             <div className="col-span-full text-center p-2">
               <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
                 Crear

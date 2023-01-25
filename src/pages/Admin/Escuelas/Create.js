@@ -3,7 +3,7 @@ import {
   CheckBox,
   HiddenBox,
   Input,
-  InputImage,
+  InputFile,
 } from "../../../components/Admin/Inputs";
 
 const Create = () => {
@@ -18,6 +18,7 @@ const Create = () => {
         }}
       >
         <div className="flex flex-col gap-3">
+          <Input title="Id" name="school_id" type="text" required={true} />
           <Input
             title="Nombre"
             name="school_name"
@@ -82,6 +83,21 @@ const Create = () => {
           </div>
 
           <Input title="RFC" name="school_rfc" type="text" required={true} />
+          <div className="grid grid-cols-2 gap-3">
+            <Input
+              title="Nombre del Encargado"
+              name="school_encargado"
+              type="text"
+              required={true}
+            />
+            <Input
+              title="Telefono del Encargado"
+              name="school_encargado_cell"
+              type="text"
+              required={true}
+            />
+          </div>
+
           <HiddenBox title="Entrega en escuela" name="school_delivery">
             <div className="grid grid-cols-[repeat(auto-fit,minmax(max-content,1fr))] gap-2">
               <span className="font-medium col-span-full">
@@ -107,7 +123,7 @@ const Create = () => {
           </HiddenBox>
         </div>
 
-        <InputImage name="school_image" />
+        <InputFile name="school_image" title="Logo de la escuela" />
         <div className="text-center col-span-full">
           <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
             Crear

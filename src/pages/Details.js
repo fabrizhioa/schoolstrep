@@ -11,7 +11,7 @@ const Details = () => {
   return (
     <div className="min-h-screen pt-20 w-full bg-gradient-to-tr from-slate-50 to-blue-50">
       <section className="p-3 max-w-screen-xl mx-auto w-full ">
-        <h2 className="font-bold text-2xl text-palette-second p-4 bg-palette-primary rounded-t-md">
+        <h2 className="font-bold text-xl text-palette-second p-4 bg-palette-primary rounded-t-md">
           Orden #{ElementId}
         </h2>
 
@@ -33,9 +33,9 @@ const Details = () => {
                 />
                 <div className="grid lg:grid-cols-[auto_max-content_max-content] gap-4 items-start">
                   <div className="p-2">
-                    <h4 className="font-semibold text-xl ">{el.nombre}</h4>
-                    <p>{el.desc}</p>
-                    <p className="text-xl text-palette-blue font-bold">
+                    <h4 className="font-semibold text-lg ">{el.nombre}</h4>
+                    <p className="text-sm">{el.desc}</p>
+                    <p className="text-base text-palette-blue font-bold">
                       ${el.precio * element.count}
                     </p>
                   </div>
@@ -43,7 +43,7 @@ const Details = () => {
                     <h4 className="text-lg font-semibold">
                       Dirección de Entrega
                     </h4>
-                    <p>
+                    <p className="text-sm">
                       {Element.shippingAddress.direccion}
                       <br />
                       {Element.shippingAddress.zipCode +
@@ -59,13 +59,13 @@ const Details = () => {
                     <h4 className="text-lg font-semibold">
                       Contacto del comprador
                     </h4>
-                    <p>{Element.shippingContact.email}</p>
-                    <p>{Element.shippingContact.phone}</p>
+                    <p className="text-sm">{Element.shippingContact.email}</p>
+                    <p className="text-sm">{Element.shippingContact.phone}</p>
                   </div>
                 </div>
 
                 <div className="w-full col-span-full p-2">
-                  <p className="text-lg font-bold">
+                  <p className="text-base font-bold">
                     Enviado el 23 de marzo, 2022
                   </p>
                   <div className="grid grid-cols-4 p-0 w-full justify-between md:place-items-center relative text-xs md:text-sm">

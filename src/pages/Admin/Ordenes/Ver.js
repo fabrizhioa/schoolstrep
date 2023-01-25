@@ -1,9 +1,12 @@
 import React from "react";
+import { FaCcVisa } from "react-icons/fa";
 import { NavLink, Route, Routes, useParams } from "react-router-dom";
 import { Orders, Articulos } from "../../../fakedata";
 const Ver = () => {
   const { id } = useParams();
   const Element = Orders.find((order) => order.id.toString() === "123123123");
+  console.log(Element);
+  const total = 0;
   return (
     <div className="flex flex-col gap-3 p-4 w-full h-full bg-slate-100">
       <h3 className="text-palette-primary font-bold text-xl p-2">
@@ -249,6 +252,54 @@ const Ver = () => {
                     );
                   })}
                 </div>
+              </div>
+            }
+          />
+
+          <Route
+            path="pago"
+            element={
+              <div className="p-4 flex flex-col gap-2">
+                <h4 className="text-lg font-semibold">Información de pagos</h4>
+
+                <div className="flex items-center gap-2">
+                  <FaCcVisa className="text-4xl text-palette-primary" />
+                  <p className="font-semibold">Ending with 4242</p>
+                  <span className="text-sm">Expires 02/24</span>
+                </div>
+                <div className="rounded-md text-palette-second">
+                  <div className="flex justify-between py-2 items-center font-medium border-b-2 border-palette-second">
+                    <p>Subtotal </p>
+                    <p>${Element.total * 0.84}</p>
+                  </div>
+                  <div className="flex justify-between py-2 items-center font-medium border-b-2 border-palette-second">
+                    <p>Inpuestos </p>
+                    <p>${Element.total * 0.16}</p>
+                  </div>
+                  <div className="flex justify-between py-2 items-center font-medium border-b-4 border-palette-primary">
+                    <p>Envio </p>
+                    <p>${14}</p>
+                  </div>
+                  <div className="font-semibold text-palette-blue text-lg flex justify-between py-2">
+                    <p>Total</p> <p>${Element.total + 14}</p>{" "}
+                  </div>
+                </div>
+              </div>
+            }
+          />
+          <Route
+            path="estado"
+            element={
+              <div className="flex flex-col items-center justify-center gap-2 text-center p-4">
+                <h2 className="text-2xl font-bold text-palette-primary">
+                  Estado
+                </h2>
+                <p className="text-palette-secondary">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+                  sapiente nobis, ab pariatur rerum excepturi culpa reiciendis,
+                  dolore praesentium voluptas autem cum dicta nostrum minus
+                  ratione, consequuntur blanditiis. Dignissimos, laborum?
+                </p>
               </div>
             }
           />

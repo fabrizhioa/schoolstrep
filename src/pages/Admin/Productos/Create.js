@@ -1,5 +1,5 @@
 import React from "react";
-import { InputImage, Input } from "../../../components/Admin/Inputs";
+import { InputFile, Input, CheckBox } from "../../../components/Admin/Inputs";
 
 const Create = () => {
   return (
@@ -57,9 +57,25 @@ const Create = () => {
             type="number"
             required={true}
           />
+          <Input title="Codigo SKU-TREP" name="sku_trep" required={true} />
+          <Input title="Codigo EAN-UPC" name="ean_upc" required={true} />
+
+          <CheckBox
+            title="Incluir impuestos"
+            name="impuesto"
+            value={true}
+            checked={true}
+          />
+          <CheckBox
+            title="Vender sin inventario"
+            name="inventarioVacio"
+            value={true}
+          />
+
+          <CheckBox title="Forrado de libro" name="forrado" value={true} />
         </div>
 
-        <InputImage name="product_image" />
+        <InputFile name="product_image" title="Imagen del producto" />
         <div className="text-center col-span-full">
           <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
             Crear

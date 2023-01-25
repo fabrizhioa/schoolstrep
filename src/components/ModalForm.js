@@ -17,7 +17,7 @@ function ModalForm({
     >
       <form
         action="/shop"
-        className="flex flex-col gap-1 p-2 lg:p-4 overflow bg-white rounded-b-md"
+        className="grid  p-4 auto-rows-auto gap-1 overflow bg-white"
         onSubmit={(e) => {
           sessionStorage.setItem("estudiantes", JSON.stringify(estudiantes));
 
@@ -94,7 +94,7 @@ function ModalForm({
               <div key={key} className={"grid gap-2 grid-cols-2"}>
                 <div>
                   <span className="w-full py-1 block font-medium ">
-                    Nombre del estudiante º{key + 1}
+                    Nombre completo del estudiante º{key + 1}
                   </span>
                   <input
                     type="text"
@@ -111,6 +111,23 @@ function ModalForm({
                 </div>
                 <div>
                   <span className="w-full py-1 block font-medium ">
+                    Nombre completo del estudiante º{key + 1}
+                  </span>
+                  <input
+                    type="text"
+                    className="border-[1px] rounded-md outline-none p-1 w-full focus:border-palette-ext hover:border-palette-second"
+                    onChange={({ target: { value } }) => {
+                      let arr = estudiantes;
+                      arr[key] = {
+                        ...arr[key],
+                        nombre: value,
+                      };
+                      setEstudiantes(arr);
+                    }}
+                  />
+                </div>
+                <div className=" col-span-full">
+                  <span className="w-full py-1 block font-medium">
                     Grado del estudiante º{key + 1}
                   </span>
                   <select
@@ -144,11 +161,9 @@ function ModalForm({
           })}
         </div>
 
-        <div>
-          <button className="w-full bg-palette-ext font-semibold shadow-sm text-white px-4 py-2 rounded-md mt-3 ">
-            Ir a la tienda
-          </button>
-        </div>
+        <button className="w-full bg-palette-ext font-semibold shadow-sm text-white px-4 py-2 rounded-md mt-3 block">
+          Ir a la tienda
+        </button>
       </form>
     </Modal>
   );

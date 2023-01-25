@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SideBar from "./components/Admin/SideBar";
+import Compras from "./pages/Admin/Compras";
 import Dashboard from "./pages/Admin/Dashboard";
 import Descuentos from "./pages/Admin/Descuentos";
 import Enlaces from "./pages/Admin/Enlaces";
@@ -28,6 +29,7 @@ const Admin = () => {
           <Route path="/usuarios/*" element={<Usuarios />} />
           <Route path="/enlaces/*" element={<Enlaces />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/compras/*" element={<Compras />} />
         </Routes>
       </div>
     </div>

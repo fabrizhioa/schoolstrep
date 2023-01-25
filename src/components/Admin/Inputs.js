@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import UploadImage from "../../assets/admin/upload.svg";
+import Upload from "../../assets/admin/upload.svg";
 
 export const CheckBox = (props) => {
   const [value, setValue] = useState(
@@ -67,6 +67,8 @@ export const Input = ({
   classInput,
   classDiv,
   classSpan,
+  min,
+  max,
 }) => {
   return (
     <div className={"flex flex-col gap-2 " + classDiv}>
@@ -76,6 +78,8 @@ export const Input = ({
         name={name}
         required={required}
         placeholder={placeholder}
+        min={min}
+        max={max}
         className={
           "p-2 rounded-md border-2 outline-none focus:border-palette-primary" +
           classInput
@@ -115,15 +119,15 @@ export const InputSelect = ({
   );
 };
 
-export const InputImage = (props) => {
-  const [imageValue, setImageValue] = useState(null);
+export const InputFile = (props) => {
+  const [fileValue, setFileValue] = useState(null);
   const inputReference = useRef();
   const buttonRef = useRef();
 
   const DragStart = () =>
     (buttonRef.current.textContent = "Soltar para guardar");
-  const DragLeave = () => (buttonRef.current.textContent = "Subir Imagen");
-  const DropFile = () => (buttonRef.current.textContent = "Subir Imagen");
+  const DragLeave = () => (buttonRef.current.textContent = "Subir elemento");
+  const DropFile = () => (buttonRef.current.textContent = "Subir elemento");
 
   return (
     <div className="w-full flex flex-col gap-2  group">
@@ -131,20 +135,20 @@ export const InputImage = (props) => {
       <div className="relative aspect-square">
         <input
           type="file"
-          hidden={imageValue !== null}
+          hidden={fileValue !== null}
           className="w-4/5 aspect-square absolute top-0 left-0 opacity-0 cursor-pointer"
           id="imageSubmit"
           name={props.name}
           ref={inputReference}
           onChange={(e) => {
-            setImageValue(e.target.files[0]);
+            setFileValue(e.target.files[0]);
           }}
         />
-        {imageValue !== null ? (
+        {fileValue !== null ? (
           <>
             <button
               onClick={() => {
-                setImageValue(null);
+                setFileValue(null);
               }}
               type="button"
               className="text-white hover:bg-red-500 drop-shadow-lg  absolute top-1 aspect-square right-1 z-10 text-lg py-1 px-2 bg-red-300 rounded-sm"
@@ -152,7 +156,7 @@ export const InputImage = (props) => {
               X
             </button>
             <img
-              src={URL.createObjectURL(imageValue)}
+              src={URL.createObjectURL(fileValue)}
               alt="preview"
               className="w-full aspect-square"
             />
@@ -165,7 +169,7 @@ export const InputImage = (props) => {
             onDrop={DropFile}
             onDragLeave={DragLeave}
           >
-            <img src={UploadImage} className="w-2/4" alt="upload icon" />
+            <img src={Upload} className="w-2/4" alt="upload icon" />
             <p
               className="p-2  text-tc rounded-sm px-4"
               type="button"

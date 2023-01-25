@@ -5,15 +5,33 @@ const List = () => {
   const [countView, setCountView] = useState(5);
   const [search, setSearch] = useState("");
   //data falsa para pruebas porque no existe
-  const [falseArray, setFalseArray] = useState(new Array(countView).fill(1));
-
+  const [falseArray, setFalseArray] = useState([]);
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    setFalseArray(new Array(countView).fill(1));
-    if (search.length > 0) {
-      //funcion de busqueda
-      //let newArray = array.filter((element) =>  element.id.includes(search))
-      //setArray(newArray)
+    // ACA SE CAMBIA POR LA DATA RECIBIDA
+    let fa = new Array(20);
+    for (let i = 0; i < fa.length; i++) {
+      fa[i] = i;
     }
+
+    let arrayPage = [];
+    let maxPage = fa.length / countView;
+    let lastElement = 0;
+    for (let i = 0; i < maxPage; i++) {
+      arrayPage[i] = fa.filter(
+        (e, key) => lastElement <= key && key < lastElement + countView
+      );
+      console.log(arrayPage);
+      lastElement += countView;
+    }
+
+    setFalseArray(arrayPage);
+    setPage(1);
+    // if (search.length > 0) {
+    //   //funcion de busqueda
+    //   //let newArray = array.filter((element) =>  element.id.includes(search))
+    //   //setArray(newArray)
+    // }
   }, [countView, search]);
 
   console.log(falseArray);
@@ -62,13 +80,13 @@ const List = () => {
           </tr>
         </thead>
         <tbody>
-          {falseArray.map((e, key) => (
+          {falseArray[page - 1]?.map((e, key) => (
             <tr
               key={key}
               className="border-b-2 last:border-0 text-center bg-slate-50"
             >
-              <td className="p-1">hola{key}</td>
-              <td className="p-1">joe{key}@doe.com</td>
+              <td className="p-1">hola {e}</td>
+              <td className="p-1">joe{e}@doe.com</td>
               <td className="p-1">22/01/2022</td>
               <td className="p-1">300</td>
               <td className="p-1">Si</td>
@@ -95,6 +113,22 @@ const List = () => {
           ))}
         </tbody>
       </table>
+      <div className="flex self-end items-center gap-3 font-medium p-2 bg-white rounded-md shadow ">
+        {falseArray?.map((e, key) => (
+          <button
+            type="button"
+            key={key}
+            onClick={() => setPage(key + 1)}
+            className={
+              page === key + 1
+                ? "font-bold text-palette-primary border-b-2 border-b-palette-primary aspect-square h-max w-auto block"
+                : "border-b-2 border-transparent aspect-square h-max block"
+            }
+          >
+            {key + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

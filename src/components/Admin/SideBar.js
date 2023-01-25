@@ -99,6 +99,17 @@ const SideBar = () => {
           Enlaces
           <MdArrowRight className="hidden text-xl group-hover:inline-block" />
         </NavLink>
+        <NavLink
+          to="compras"
+          className={({ isActive }) =>
+            `p-2 rounded-md flex justify-between items-center group ${
+              isActive ? "bg-palette-ext" : "bg-palette-second"
+            }`
+          }
+        >
+          Compras
+          <MdArrowRight className="hidden text-xl group-hover:inline-block" />
+        </NavLink>
       </nav>
       <button
         className="bg-palette-second/40 px-2 py-1 rounded-md  grid grid-cols-[max-content_auto] gap-2 items-center relative"
