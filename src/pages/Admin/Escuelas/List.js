@@ -5,7 +5,6 @@ import Empty from "../../../components/Admin/Empty";
 import { Colegios } from "../../../fakedata";
 
 const List = () => {
-  console.log(Colegios);
   return Colegios.length <= 0 ? (
     <Empty
       text="no hay escuelas"

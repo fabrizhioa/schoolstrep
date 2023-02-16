@@ -69,9 +69,8 @@ const Home = () => {
                         setSelectCollage(StringToUrl(colegio.nombre));
                         setVerModal(true);
                       }}
-                      // className="shadow-md rounded-xl overflow-hidden shadow-black/30 relative bg-table bg-cover text-palette-white min-h-[320px] md:h-[50vh]  group items-center justify-center  hover:shadow-white/40"
                       className="w-auto inline-flex shadow-md rounded-xl bg-table relative shadow-black/20 bg-cover text-palette-white min-h-[320px] group items-center justify-center hover:shadow-white/20 "
-                      key={key}
+                      key={colegio.id ?? key}
                     >
                       <div className="relative w-max">
                         <img

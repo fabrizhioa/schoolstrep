@@ -16,15 +16,11 @@ const List = () => {
 
     let arrayPage = [];
     let maxPage = fa.length / countView;
-    let lastElement = 0;
     for (let i = 0; i < maxPage; i++) {
       arrayPage[i] = fa.filter(
-        (e, key) => lastElement <= key && key < lastElement + countView
+        (e, key) => key >= countView * i && key < countView * (i + 1)
       );
-      console.log(arrayPage);
-      lastElement += countView;
     }
-
     setFalseArray(arrayPage);
     setPage(1);
     // if (search.length > 0) {
@@ -33,8 +29,6 @@ const List = () => {
     //   //setArray(newArray)
     // }
   }, [countView, search]);
-
-  console.log(falseArray);
 
   return (
     <div className="flex flex-col gap-3 p-4 w-full h-full bg-slate-100">

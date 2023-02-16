@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Input, InputFile } from "../../../components/Admin/Inputs";
-
+import { Input, InputFile, InputIdBox } from "../../../components/Admin/Inputs";
+import { Articulos } from "../../../fakedata";
 const Create = () => {
   const [productCount, setProductCount] = useState([0]);
   return (
@@ -47,9 +47,14 @@ const Create = () => {
           </select>
         </div>
         {productCount.map((e, key) => (
-          <div className="flex flex-col gap-2 bg-white p-2 roudned-lg border-2 rounded-lg">
-            <Input
-              title={"Id producto #" + (key + 1)}
+          <div
+            className="flex flex-col gap-2 bg-white p-2 roudned-lg border-2 rounded-lg"
+            key={key}
+          >
+            <InputIdBox
+              data={Articulos}
+              fields={["id"]}
+              title={"Id del producto #" + (key + 1)}
               name={"idproducto#" + (key + 1)}
             />
             <Input

@@ -32,42 +32,40 @@ const Create = ({ closeAction }) => {
             type="text"
             required={true}
           />
-          <Input
-            title="Descuento (Porcentaje)"
-            name="discount_value"
-            type="text"
-            required={true}
-          />
-          <div className="flex items-center gap-3">
-            <div
-              className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
-                typeDiscount === 0 || typeDiscount === undefined
-                  ? "border-palette-primary"
-                  : "border-slate-300"
-              }`}
-              onClick={() => setType(0)}
-            >
-              <p>Porcentaje</p>
-            </div>
-            <div
-              className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
-                typeDiscount === 1
-                  ? "border-palette-primary"
-                  : "border-slate-300"
-              }`}
-              onClick={() => setType(1)}
-            >
-              <p>Cantidad</p>
-            </div>
-            <div
-              className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
-                typeDiscount === 2
-                  ? "border-palette-primary"
-                  : "border-slate-300"
-              }`}
-              onClick={() => setType(2)}
-            >
-              <p>Envio Gratis</p>
+
+          <div className="flex gap-3 flex-col">
+            <span className={"font-medium"}>Descuento:</span>
+            <div className="flex gap-3 items-center">
+              <div
+                className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
+                  typeDiscount === 0 || typeDiscount === undefined
+                    ? "border-palette-primary"
+                    : "border-slate-300"
+                }`}
+                onClick={() => setType(0)}
+              >
+                <p>Porcentaje</p>
+              </div>
+              <div
+                className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
+                  typeDiscount === 1
+                    ? "border-palette-primary"
+                    : "border-slate-300"
+                }`}
+                onClick={() => setType(1)}
+              >
+                <p>Cantidad</p>
+              </div>
+              <div
+                className={`p-1 px-2 border-2 rounded-md cursor-pointer bg-white ${
+                  typeDiscount === 2
+                    ? "border-palette-primary"
+                    : "border-slate-300"
+                }`}
+                onClick={() => setType(2)}
+              >
+                <p>Envio Gratis</p>
+              </div>
             </div>
           </div>
 
@@ -82,7 +80,7 @@ const Create = ({ closeAction }) => {
           ) : typeDiscount === 1 ? (
             <Input step="0.01" name="discount" type="number" title="Cantidad" />
           ) : (
-            <input hidden name="discount" value="freeShipping" />
+            <input hidden name="discount" value="freeShipping" readOnly />
           )}
 
           <Input

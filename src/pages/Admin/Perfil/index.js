@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Perfil = () => {
   const [edit, setActiveEdit] = useState(false);
+  const profileImage = useRef();
+  const profileInputImage = useRef();
   const fakeData = {
     id: "123",
     nombre: "John",
@@ -16,10 +18,25 @@ const Perfil = () => {
           <img
             src={fakeData.img}
             alt={"user" + fakeData.id}
+            ref={profileImage}
             className="aspect-square w-64 border-2 shadow rounded-full mx-auto"
           />
+          <input
+            type="file"
+            hidden
+            name="profileImage"
+            ref={profileInputImage}
+            onChange={(e) => {
+              let url = URL.createObjectURL(e.target.files[0]);
+              profileImage.current.src = url;
+            }}
+          />
           {edit && (
-            <button className="group-hover:flex hidden absolute w-full h-full aspect-square bg-black/20 top-0 rounded-full items-center justify-center text-white font-bold drop-shadow">
+            <button
+              className="group-hover:flex hidden absolute w-full h-full aspect-square bg-black/20 top-0 rounded-full items-center justify-center text-white font-bold drop-shadow"
+              type="button"
+              onClick={() => profileInputImage.current.click()}
+            >
               Subir nueva imagen
             </button>
           )}

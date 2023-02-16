@@ -25,7 +25,7 @@ const List = () => {
             <Input title="Nombre" name="firstnameUser" />
             <Input title="Apellido" name="lastnameUser" />
             <Input title="Correo" name="emailUser" />
-            <Input title="Tipo" name="typeUser" />
+            <Input title="Clave" name="passwordUser" type="password" />
             <div className="col-span-full text-center p-2">
               <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
                 Crear

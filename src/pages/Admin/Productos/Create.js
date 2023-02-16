@@ -1,7 +1,23 @@
 import React from "react";
-import { InputFile, Input, CheckBox } from "../../../components/Admin/Inputs";
-
+import {
+  InputFile,
+  Input,
+  CheckBox,
+  InputSelect,
+} from "../../../components/Admin/Inputs";
+import StringToUrl from "../../../adapters/StringToUrl";
 const Create = () => {
+  const Categorias = [
+    {
+      id: 1,
+      nombre: "Morrales",
+    },
+    {
+      id: 2,
+      nombre: "Colores",
+    },
+  ];
+
   return (
     <div className="bg-slate-50 p-4">
       <h2 className="text-xl font-bold text-palette-primary">
@@ -39,6 +55,34 @@ const Create = () => {
             type="text"
             required={true}
           />
+
+          <InputSelect
+            title="Categoria"
+            createOptionModal={"Crear Categoria"}
+            childrenModal={
+              <form className="flex flex-col gap-3 p-4">
+                <Input
+                  title="Nombre de categoria"
+                  name="category_name"
+                  type="text"
+                  required={true}
+                />
+
+                <div className="text-center col-span-full">
+                  <button className="text-lg font-bold p-2 px-4 rounded-md bg-palette-ext hover:text-white">
+                    Crear
+                  </button>
+                </div>
+              </form>
+            }
+          >
+            {Categorias.map((categoria) => (
+              <option value={StringToUrl(categoria.nombre)} key={categoria.id}>
+                {categoria.nombre}
+              </option>
+            ))}
+          </InputSelect>
+
           <Input
             title="Precio"
             name="product_price"
@@ -72,7 +116,18 @@ const Create = () => {
             value={true}
           />
 
-          <CheckBox title="Forrado de libro" name="forrado" value={true} />
+          <CheckBox
+            title="Forrado de libro"
+            name="forrado"
+            value={true}
+            checked={true}
+          />
+          <CheckBox
+            title="Producto en Venta"
+            name="enventa"
+            value={true}
+            checked={true}
+          />
         </div>
 
         <InputFile name="product_image" title="Imagen del producto" />

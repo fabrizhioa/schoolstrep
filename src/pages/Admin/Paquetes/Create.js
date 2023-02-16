@@ -18,12 +18,14 @@ const Create = () => {
     let list = Articulos;
     list = Articulos.filter((a) => {
       let result = false;
+
       selectListArticles.forEach((e) => {
         result = e.id === a.id;
       });
 
       return !result;
     });
+
     setListArticles(list);
   };
 
@@ -43,7 +45,7 @@ const Create = () => {
           <Input title="Nombre" />
           <InputSelect title="Collages">
             {Colegios.map((colegio) => (
-              <option value={StringToUrl(colegio.nombre)}>
+              <option value={StringToUrl(colegio.nombre)} key={colegio.id}>
                 {colegio.nombre}
               </option>
             ))}
@@ -71,13 +73,16 @@ const Create = () => {
             checked={true}
             value="obligatorio"
           />
+          <div className="flex flex-col gap-3">
+            <span className="font-medium">Buscar Articulo:</span>
+            <ComboBox
+              data={listArticles}
+              setAction={(e) => {
+                setSelectListArticles([...selectListArticles, e]);
+              }}
+            />
+          </div>
 
-          <ComboBox
-            data={listArticles}
-            setAction={(e) => {
-              setSelectListArticles([...selectListArticles, e]);
-            }}
-          />
           <div className="flex flex-col gap-3">
             <span className="font-medium">Lista de articulos:</span>
             <div className="border-2 rounded-md bg-white p-2 flex flex-col gap-3">
@@ -85,14 +90,8 @@ const Create = () => {
                 <p>No hay articulos en la lista</p>
               )}
               {selectListArticles.map((element, key) => (
-                <button
-                  type="button"
-                  className="flex border-2 p-1 px-2 rounded-full items-center justify-between text-slate-700 font-bold border-slate-200 group hover:bg-red-300 hover:border-red-500 hover-text-white"
-                  onClick={() =>
-                    setSelectListArticles(
-                      selectListArticles.filter((e, index) => index !== key)
-                    )
-                  }
+                <div
+                  className="flex border-2 p-1 px-2 rounded-full items-center justify-between text-slate-700 font-bold border-slate-200 group "
                   key={key}
                 >
                   <p>
@@ -100,10 +99,29 @@ const Create = () => {
                       ? element.nombre.substring(0, 59)
                       : element.nombre}
                   </p>
-                  <p className="text-slate-200 group-hover:text-red-500">
+                  <div>
+                    <span className="font-medium">cantidad:</span>
+                    <input
+                      type="number"
+                      name={`product#${key}Cuantity`}
+                      min={1}
+                      defaultValue={1}
+                      className="w-min border-2 outline-none rounded-lg"
+                    />
+                  </div>
+
+                  <button
+                    className="text-slate-200 group-hover:text-red-500"
+                    onClick={() =>
+                      setSelectListArticles(
+                        selectListArticles.filter((e, index) => index !== key)
+                      )
+                    }
+                    type="button"
+                  >
                     <MdClose />
-                  </p>
-                </button>
+                  </button>
+                </div>
               ))}
             </div>
           </div>

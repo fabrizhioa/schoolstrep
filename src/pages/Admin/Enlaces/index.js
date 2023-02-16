@@ -20,7 +20,7 @@ const Enlaces = () => {
     <>
       {viewModal && (
         <Modal closeAction={() => setViewModal(false)}>
-          <form className="grid grid-cols-2 gap-3 p-2 bg-white">
+          <form className="grid grid-cols-2 gap-3 p-2 bg-white container">
             <div>
               <Input title="Nombre" name="name" />
               <InputSelect title="colegio" name="colegio">

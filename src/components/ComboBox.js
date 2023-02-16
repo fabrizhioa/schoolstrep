@@ -26,7 +26,7 @@ const ComboBox = ({ data, setFilter, setSelect, setAction }) => {
     setAction(element);
   }
 
-  return [
+  return (
     <div className="relative w-full">
       <input
         type="text"
@@ -41,7 +41,7 @@ const ComboBox = ({ data, setFilter, setSelect, setAction }) => {
               className="flex items-center gap-2 p-1 hover:bg-palette-ext w-full rounded-md"
               type="button"
               onClick={() => selectHandle(element)}
-              key={key}
+              key={element.id}
             >
               <img
                 src={element.img}
@@ -53,8 +53,8 @@ const ComboBox = ({ data, setFilter, setSelect, setAction }) => {
           ))}
         </div>
       )}
-    </div>,
-  ];
+    </div>
+  );
 };
 
 export default ComboBox;
